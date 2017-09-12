@@ -3,12 +3,12 @@
 
 #include <QState>
 #include <QTimer>
-#include "uhv4pvicollectordb.h"
+#include "uhvpvicollectordb.h"
 
 class wait4V : public QState
 {
 public:
-    wait4V(UHV4PVICollectorDB * database);
+    wait4V(UHVPVICollectorDB * database);
 protected:
     void onEntry(QEvent *) override;
     void onExit(QEvent *) override;

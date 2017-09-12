@@ -1,34 +1,38 @@
-#ifndef UHV4PVICOLLECTORDB_H
-#define UHV4PVICOLLECTORDB_H
+#ifndef UHVPVICOLLECTORDB_H
+#define UHVPVICOLLECTORDB_H
 
-#define UHV4PVICollectorDBDbgEn 1
-#define UHV4PVICollectorStateDbgEn 1
+#define UHVPVICollectorDBDbgEn 1
+#define UHVPVICollectorStateDbgEn 1
 
 #include <QObject>
 #include "anlogger.h"
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QByteArray>
+#include "binaryprotocol.h"
 #include "windowprotocol.h"
 
-class UHV4PVICollectorDB : public QObject
+class UHVPVICollectorDB : public QObject
 {
     Q_OBJECT
 public:
-    explicit UHV4PVICollectorDB(QObject *parent = nullptr);
+    explicit UHVPVICollectorDB(QObject *parent = nullptr);
     quint32 currentGlobalID;
     quint32 breakIntervalMSecs = 1000;
     quint32 waitIntervalMSecs = 5000;
     QSqlDatabase localDb;
     QSqlQuery currentQuery;
-    WindowProtocol * currentWP;
     QByteArray currentReplyFromPump;
     QString currentPressure;
     QString currentVoltage;
     QString currentCurrent;
     QString previousReadState;
-    quint8 currentWPNo;
+    quint8 currentPNo;
     quint8 currentCH;
+    bool isAnUHV2;
+    QByteArray QBAReadP;
+    QByteArray QBAReadV;
+    QByteArray QBAReadI;
 signals:
     void errorOccurred();
     void pause();
@@ -49,6 +53,8 @@ public slots:
     void setPreviousReadState(const QString &StateObjName);
     void resume();
     void processDataFromPump(const QByteArray &data);
+private:
+    QString getDataString();
 };
 
-#endif // UHV4PVICOLLECTORDB_H
+#endif // UHVPVICOLLECTORDB_H

@@ -4,8 +4,7 @@
 #include <QMainWindow>
 #include <QThread>
 #include "UHVWorker/uhvworker.h"
-#include "UHV2PVICollector/uhv2pvicollector.h"
-#include "UHV4PVICollector/uhv4pvicollector.h"
+#include "UHVPVICollector/uhvpvicollector.h"
 #include "pilocaldbworker.h"
 #include "smallcoordinator.h"
 

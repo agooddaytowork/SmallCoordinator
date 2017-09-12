@@ -91,33 +91,33 @@ void piLocalDBWorker::doControlTask()
                 }
                 else if (tmpQuery.value("pumpType").toInt()==1)
                 {
-                    tmpWP.SetWCNo(tmpQuery.value("pumpAddr").toInt());
+                    tmpWP.setWPNo(tmpQuery.value("pumpAddr").toInt());
                     if (currentQuery.value("HV").toInt()==0)
                     {
-                        tmpWP.HVSwitch(tmpQuery.value("pumpCH").toInt(),"OFF");
+                        tmpWP.HVOnOff().setChNo(tmpQuery.value("pumpCH").toInt()).Write().setOFF();
                     }
                     else
                     {
-                        tmpWP.HVSwitch(tmpQuery.value("pumpCH").toInt(),"ON");
+                        tmpWP.HVOnOff().setChNo(tmpQuery.value("pumpCH").toInt()).Write().setON();
                     }
-                    tmpWP.GenerateMSG();
-                    anIf(piLclDbWrkDbgEn, anAck("Control UHV4: " << tmpWP.GetMSG().toHex()));
+                    tmpWP.genMSG();
+                    anIf(piLclDbWrkDbgEn, anAck("Control UHV4: " << tmpWP.getMSG().toHex()));
                     emit controlUHV4(tmpWP);
                 }
                 else
                 {
                     anIf(piLclDbWrkDbgEn, anWarn("Invalid pumpType at GlobalID=" + currentQuery.value("GlobalID").toString()));
                 }
-                tmpCP.SetSdcsId(tmpQuery.value("sdcsAddr").toInt()).SetChId(tmpQuery.value("sdcsCH").toInt()).SetRFID(QByteArray::fromHex(tmpQuery.value("RFID").toByteArray().mid(1)));
+                tmpCP.setSdcsId(tmpQuery.value("sdcsAddr").toInt()).setChId(tmpQuery.value("sdcsCH").toInt()).setRFID(QByteArray::fromHex(tmpQuery.value("RFID").toByteArray().mid(1)));
                 if (currentQuery.value("Valve").toInt()==0)
                 {
-                    tmpCP.SetValveOff();
+                    tmpCP.setValveOff();
                 }
                 else
                 {
-                    tmpCP.SetValveOn();
+                    tmpCP.setValveOn();
                 }
-                anIf(piLclDbWrkDbgEn, anAck("Control Valve: " << tmpCP.GetMsgStr()));
+                anIf(piLclDbWrkDbgEn, anAck("Control Valve: " << tmpCP.getMsgStr()));
                 emit controlValve(tmpCP);
             }  
             tmpQuery.exec("UPDATE stations SET setRoughValveOn=" +

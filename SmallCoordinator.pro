@@ -39,28 +39,18 @@ SOURCES += \
     UHVWorker/uhvworker.cpp \
     UHVWorker/uhvworkerdirectstatetransition.cpp \
     UHVWorker/uhvworkervarset.cpp \
-    UHV4PVICollector/directtransition.cpp \
-    UHV4PVICollector/emitreadi.cpp \
-    UHV4PVICollector/emitreadp.cpp \
-    UHV4PVICollector/emitreadv.cpp \
-    UHV4PVICollector/idle.cpp \
-    UHV4PVICollector/uhv4pvicollector.cpp \
-    UHV4PVICollector/uhv4pvicollectordb.cpp \
-    UHV4PVICollector/wait4i.cpp \
-    UHV4PVICollector/wait4p.cpp \
-    UHV4PVICollector/wait4v.cpp \
-    UHV2PVICollector/directtransition.cpp \
-    UHV2PVICollector/emitreadi.cpp \
-    UHV2PVICollector/emitreadp.cpp \
-    UHV2PVICollector/emitreadv.cpp \
-    UHV2PVICollector/idle.cpp \
-    UHV2PVICollector/uhv2pvicollector.cpp \
-    UHV2PVICollector/uhv2pvicollectordb.cpp \
-    UHV2PVICollector/wait4i.cpp \
-    UHV2PVICollector/wait4p.cpp \
-    UHV2PVICollector/wait4v.cpp \
     pilocaldbworker.cpp \
-    canprotocol.cpp
+    canprotocol.cpp \
+    UHVPVICollector/directtransition.cpp \
+    UHVPVICollector/emitreadi.cpp \
+    UHVPVICollector/emitreadp.cpp \
+    UHVPVICollector/emitreadv.cpp \
+    UHVPVICollector/idle.cpp \
+    UHVPVICollector/uhvpvicollector.cpp \
+    UHVPVICollector/uhvpvicollectordb.cpp \
+    UHVPVICollector/wait4i.cpp \
+    UHVPVICollector/wait4p.cpp \
+    UHVPVICollector/wait4v.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -79,28 +69,18 @@ HEADERS += \
     UHVWorker/uhvworker.h \
     UHVWorker/uhvworkerdirectstatetransition.h \
     UHVWorker/uhvworkervarset.h \
-    UHV4PVICollector/directtransition.h \
-    UHV4PVICollector/emitreadi.h \
-    UHV4PVICollector/emitreadp.h \
-    UHV4PVICollector/emitreadv.h \
-    UHV4PVICollector/idle.h \
-    UHV4PVICollector/uhv4pvicollector.h \
-    UHV4PVICollector/uhv4pvicollectordb.h \
-    UHV4PVICollector/wait4i.h \
-    UHV4PVICollector/wait4p.h \
-    UHV4PVICollector/wait4v.h \
-    UHV2PVICollector/directtransition.h \
-    UHV2PVICollector/emitreadi.h \
-    UHV2PVICollector/emitreadp.h \
-    UHV2PVICollector/emitreadv.h \
-    UHV2PVICollector/idle.h \
-    UHV2PVICollector/uhv2pvicollector.h \
-    UHV2PVICollector/uhv2pvicollectordb.h \
-    UHV2PVICollector/wait4i.h \
-    UHV2PVICollector/wait4p.h \
-    UHV2PVICollector/wait4v.h \
     pilocaldbworker.h \
-    canprotocol.h
+    canprotocol.h \
+    UHVPVICollector/directtransition.h \
+    UHVPVICollector/emitreadi.h \
+    UHVPVICollector/emitreadp.h \
+    UHVPVICollector/emitreadv.h \
+    UHVPVICollector/idle.h \
+    UHVPVICollector/uhvpvicollector.h \
+    UHVPVICollector/uhvpvicollectordb.h \
+    UHVPVICollector/wait4i.h \
+    UHVPVICollector/wait4p.h \
+    UHVPVICollector/wait4v.h
 
 FORMS += \
         mainwindow.ui

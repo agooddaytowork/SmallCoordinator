@@ -11,9 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
     uhv2worker->setObjectName("uhv2worker");
     UHVWorker * uhv4worker = new UHVWorker();
     uhv4worker->setObjectName("uhv4worker");
-    UHV2PVICollector * uhv2pvicollector = new UHV2PVICollector();
+    UHVPVICollector * uhv2pvicollector = new UHVPVICollector(true);
     uhv2pvicollector->setObjectName("uhv2pvicollector");
-    UHV4PVICollector * uhv4pvicollector = new UHV4PVICollector();
+    UHVPVICollector * uhv4pvicollector = new UHVPVICollector(false);
     uhv4pvicollector->setObjectName("uhv4pvicollector");
     piLocalDBWorker * piLocalDatabase = new piLocalDBWorker();
     piLocalDatabase->setObjectName("piLocalDatabase");
@@ -34,28 +34,34 @@ MainWindow::MainWindow(QWidget *parent) :
     piLocalDatabase->moveToThread(piLocalDatabaseThread);
     smallcoordinator->moveToThread(smallcoordinatorThread);
 
-    QObject::connect(uhv2workerThread, &QThread::started, uhv2worker, &UHVWorker::start);
-    QObject::connect(uhv4workerThread, &QThread::started, uhv4worker, &UHVWorker::start);
-    QObject::connect(uhv2pvicollectorThread, &QThread::started, uhv2pvicollector, &UHV2PVICollector::start);
-    QObject::connect(uhv4pvicollectorThread, &QThread::started, uhv4pvicollector, &UHV4PVICollector::start);
-    QObject::connect(piLocalDatabaseThread, &QThread::started, piLocalDatabase, &piLocalDBWorker::start);
+//    QObject::connect(uhv2workerThread, &QThread::started, uhv2worker, &UHVWorker::start);
+//    QObject::connect(uhv4workerThread, &QThread::started, uhv4worker, &UHVWorker::start);
+//    QObject::connect(uhv2pvicollectorThread, &QThread::started, uhv2pvicollector, &UHVPVICollector::start);
+//    QObject::connect(uhv4pvicollectorThread, &QThread::started, uhv4pvicollector, &UHVPVICollector::start);
+//    QObject::connect(piLocalDatabaseThread, &QThread::started, piLocalDatabase, &piLocalDBWorker::start);
     QObject::connect(smallcoordinatorThread, &QThread::started, smallcoordinator, &SmallCoordinator::start);
+    QObject::connect(smallcoordinatorThread, &QThread::started, this, [&](){anAck("Small Coordinator Thread Is Started !");});
 
+    QObject::connect(smallcoordinator, &SmallCoordinator::started, smallcoordinator, &SmallCoordinator::distributeGlobalSignals);
     QObject::connect(smallcoordinator, &SmallCoordinator::started, [&](){
+        anAck("Small Coordinator Is Started !");
         uhv2workerThread->start();
         uhv4workerThread->start();
     });
-    bool isUHV2WorkerStarted = false;
-    bool isUHV4WorkerStarted = false;
-    QObject::connect(uhv2worker, &UHVWorker::started, [&](){isUHV2WorkerStarted=true;});
-    QObject::connect(uhv4worker, &UHVWorker::started, [&](){isUHV4WorkerStarted=true;});
-    while (!(isUHV2WorkerStarted && isUHV4WorkerStarted))
-    {
-        qApp->processEvents();
-    };
-    piLocalDatabaseThread->start();
-    uhv2pvicollectorThread->start();
-    uhv4pvicollectorThread->start();
+
+//    QObject::connect(uhv2worker, &UHVWorker::started, [&](){
+//        anAck("uhv2worker is started !");
+//        piLocalDatabaseThread->start();
+//        uhv2pvicollectorThread->start();
+//    });
+//    QObject::connect(uhv4worker, &UHVWorker::started, [&](){
+//        uhv4pvicollectorThread->start();
+//    });
+
+    anError("GATE b69023486b0");
+    smallcoordinatorThread->start();
+    anError("GATE ,g90qa4jm0g92");
+
 }
 
 MainWindow::~MainWindow()

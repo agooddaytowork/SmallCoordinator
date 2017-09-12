@@ -31,8 +31,9 @@ public slots:
     void In(SmallCoordinatorDB::GlobalSignal aSignal);
     void start();
     void stop();
-private:
     void distributeGlobalSignals();
+private:
+
 
     QMap<quint8,QList<QString>*> GlobalSignalKeysSortedByPriority;
     QHash<QString,SmallCoordinatorDB::GlobalSignal*> GlobalSignalsByGlobalSignalKey;
