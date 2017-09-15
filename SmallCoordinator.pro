@@ -50,7 +50,15 @@ SOURCES += \
     UHVPVICollector/uhvpvicollectordb.cpp \
     UHVPVICollector/wait4i.cpp \
     UHVPVICollector/wait4p.cpp \
-    UHVPVICollector/wait4v.cpp
+    UHVPVICollector/wait4v.cpp \
+    piLocalDBWorker/connectdatabase.cpp \
+    piLocalDBWorker/directtransition.cpp \
+    piLocalDBWorker/pilocaldbworker.cpp \
+    piLocalDBWorker/pilocaldbworkervarset.cpp \
+    piLocalDBWorker/setissentcolumnonlocaldatabase.cpp \
+    piLocalDBWorker/updatelocaldatabase.cpp \
+    piLocalDBWorker/updateonlinedatabase.cpp \
+    piLocalDBWorker/wait4errorhandler.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -80,7 +88,15 @@ HEADERS += \
     UHVPVICollector/uhvpvicollectordb.h \
     UHVPVICollector/wait4i.h \
     UHVPVICollector/wait4p.h \
-    UHVPVICollector/wait4v.h
+    UHVPVICollector/wait4v.h \
+    piLocalDBWorker/connectdatabase.h \
+    piLocalDBWorker/directtransition.h \
+    piLocalDBWorker/pilocaldbworker.h \
+    piLocalDBWorker/pilocaldbworkervarset.h \
+    piLocalDBWorker/setissentcolumnonlocaldatabase.h \
+    piLocalDBWorker/updatelocaldatabase.h \
+    piLocalDBWorker/updateonlinedatabase.h \
+    piLocalDBWorker/wait4errorhandler.h
 
 FORMS += \
         mainwindow.ui

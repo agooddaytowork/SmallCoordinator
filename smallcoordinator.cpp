@@ -38,8 +38,8 @@ void SmallCoordinator::distributeGlobalSignals()
     while (isRunning)
     {
 //        qApp->processEvents();
-        QEventLoop loop;
-        loop.exec();
+//        QEventLoop loop;
+//        loop.exec();
 //        if (!GlobalSignalKeysSortedByPriority.isEmpty())
 //        {
 //            currentSignal = GlobalSignalsByGlobalSignalKey.value(GlobalSignalKeysSortedByPriority.last()->first());

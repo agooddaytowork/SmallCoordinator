@@ -5,7 +5,7 @@
 #include <QThread>
 #include "UHVWorker/uhvworker.h"
 #include "UHVPVICollector/uhvpvicollector.h"
-#include "pilocaldbworker.h"
+#include "piLocalDBWorker/pilocaldbworker.h"
 #include "smallcoordinator.h"
 
 namespace Ui {
