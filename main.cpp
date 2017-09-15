@@ -1,11 +1,20 @@
-#include "mainwindow.h"
-#include <QApplication>
-
+#include <QCoreApplication>
+#include "piLocalDBWorker/pilocaldbworker.h"
+#include <QThread>
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+    QCoreApplication a(argc, argv);
+    qRegisterMetaType<GlobalSignal>("GlobalSignal");
 
+
+
+    anWarn("START TEST");
+
+    piLocalDBWorker * test = new piLocalDBWorker();
+    test->start();
+
+
+
+    anWarn("MACHINE STARTED");
     return a.exec();
 }
