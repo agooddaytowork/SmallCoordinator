@@ -34,11 +34,12 @@ MainWindow::MainWindow(QWidget *parent) :
     piLocalDatabase->moveToThread(piLocalDatabaseThread);
     smallcoordinator->moveToThread(smallcoordinatorThread);
 
-//    QObject::connect(uhv2workerThread, &QThread::started, uhv2worker, &UHVWorker::start);
-//    QObject::connect(uhv4workerThread, &QThread::started, uhv4worker, &UHVWorker::start);
-//    QObject::connect(uhv2pvicollectorThread, &QThread::started, uhv2pvicollector, &UHVPVICollector::start);
-//    QObject::connect(uhv4pvicollectorThread, &QThread::started, uhv4pvicollector, &UHVPVICollector::start);
-//    QObject::connect(piLocalDatabaseThread, &QThread::started, piLocalDatabase, &piLocalDBWorker::start);
+    QObject::connect(uhv2workerThread, &QThread::started, uhv2worker, &UHVWorker::start);
+    QObject::connect(uhv4workerThread, &QThread::started, uhv4worker, &UHVWorker::start);
+    QObject::connect(uhv2pvicollectorThread, &QThread::started, uhv2pvicollector, &UHVPVICollector::start);
+    QObject::connect(uhv4pvicollectorThread, &QThread::started, uhv4pvicollector, &UHVPVICollector::start);
+    QObject::connect(piLocalDatabaseThread, &QThread::started, piLocalDatabase, &piLocalDBWorker::start);
+
     QObject::connect(smallcoordinatorThread, &QThread::started, smallcoordinator, &SmallCoordinator::start);
     QObject::connect(smallcoordinatorThread, &QThread::started, this, [&](){anAck("Small Coordinator Thread Is Started !");});
 

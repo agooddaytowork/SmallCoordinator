@@ -37,7 +37,7 @@ void SmallCoordinator::distributeGlobalSignals()
     anAck("Enter Infinite Loop !");
     while (isRunning)
     {
-//        qApp->processEvents();
+        qApp->processEvents();
 //        QEventLoop loop;
 //        loop.exec();
 //        if (!GlobalSignalKeysSortedByPriority.isEmpty())
