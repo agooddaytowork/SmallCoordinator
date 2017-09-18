@@ -27,8 +27,6 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     binaryprotocol.cpp \
-    smallcoordinator.cpp \
-    smallcoordinatordb.cpp \
     windowprotocol.cpp \
     UHVWorker/errorannouncement.cpp \
     UHVWorker/messagereceiveandemitout.cpp \
@@ -58,15 +56,15 @@ SOURCES += \
     piLocalDBWorker/setissentcolumnonlocaldatabase.cpp \
     piLocalDBWorker/updatelocaldatabase.cpp \
     piLocalDBWorker/updateonlinedatabase.cpp \
-    piLocalDBWorker/wait4errorhandler.cpp
+    piLocalDBWorker/wait4errorhandler.cpp \
+    SmallCoordinator/smallcoordinatordb.cpp \
+    SmallCoordinator/smallcoordinator.cpp
 
 HEADERS += \
         mainwindow.h \
     anlogger.h \
     binaryprotocol.h \
     commonthings.h \
-    smallcoordinator.h \
-    smallcoordinatordb.h \
     windowprotocol.h \
     UHVWorker/errorannouncement.h \
     UHVWorker/messagereceiveandemitout.h \
@@ -96,7 +94,9 @@ HEADERS += \
     piLocalDBWorker/setissentcolumnonlocaldatabase.h \
     piLocalDBWorker/updatelocaldatabase.h \
     piLocalDBWorker/updateonlinedatabase.h \
-    piLocalDBWorker/wait4errorhandler.h
+    piLocalDBWorker/wait4errorhandler.h \
+    SmallCoordinator/smallcoordinatordb.h \
+    SmallCoordinator/smallcoordinator.h
 
 FORMS += \
         mainwindow.ui
