@@ -27,28 +27,8 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     binaryprotocol.cpp \
-    windowprotocol.cpp \
-    UHVWorker/errorannouncement.cpp \
-    UHVWorker/messagereceiveandemitout.cpp \
-    UHVWorker/serialportconnectionestablishment.cpp \
-    UHVWorker/serialportinforequest.cpp \
-    UHVWorker/serialportinfovalidation.cpp \
-    UHVWorker/solitarymessagetransmission.cpp \
-    UHVWorker/uhvworker.cpp \
-    UHVWorker/uhvworkerdirectstatetransition.cpp \
-    UHVWorker/uhvworkervarset.cpp \
-    pilocaldbworker.cpp \
     canprotocol.cpp \
-    UHVPVICollector/directtransition.cpp \
-    UHVPVICollector/emitreadi.cpp \
-    UHVPVICollector/emitreadp.cpp \
-    UHVPVICollector/emitreadv.cpp \
-    UHVPVICollector/idle.cpp \
-    UHVPVICollector/uhvpvicollector.cpp \
-    UHVPVICollector/uhvpvicollectordb.cpp \
-    UHVPVICollector/wait4i.cpp \
-    UHVPVICollector/wait4p.cpp \
-    UHVPVICollector/wait4v.cpp \
+    windowprotocol.cpp \
     piLocalDBWorker/connectdatabase.cpp \
     piLocalDBWorker/directtransition.cpp \
     piLocalDBWorker/pilocaldbworker.cpp \
@@ -57,36 +37,35 @@ SOURCES += \
     piLocalDBWorker/updatelocaldatabase.cpp \
     piLocalDBWorker/updateonlinedatabase.cpp \
     piLocalDBWorker/wait4errorhandler.cpp \
+    SerialPortWorker/connectserialport.cpp \
+    SerialPortWorker/directtransition4serialportworkerstate.cpp \
+    SerialPortWorker/readbytes.cpp \
+    SerialPortWorker/requestserialportinfo.cpp \
+    SerialPortWorker/serialportworker.cpp \
+    SerialPortWorker/serialportworkerproperty.cpp \
+    SerialPortWorker/validateserialportinfo.cpp \
+    SerialPortWorker/wait4errorhandler.cpp \
+    SerialPortWorker/writebytes.cpp \
+    SmallCoordinator/smallcoordinator.cpp \
     SmallCoordinator/smallcoordinatordb.cpp \
-    SmallCoordinator/smallcoordinator.cpp
+    UHVPVICollector/directtransitionforuhvpvicollectorstate.cpp \
+    UHVPVICollector/emitreadi.cpp \
+    UHVPVICollector/emitreadp.cpp \
+    UHVPVICollector/emitreadv.cpp \
+    UHVPVICollector/idle.cpp \
+    UHVPVICollector/uhvpvicollector.cpp \
+    UHVPVICollector/uhvpvicollectordb.cpp \
+    UHVPVICollector/wait4i.cpp \
+    UHVPVICollector/wait4p.cpp \
+    UHVPVICollector/wait4v.cpp
 
 HEADERS += \
         mainwindow.h \
     anlogger.h \
     binaryprotocol.h \
+    canprotocol.h \
     commonthings.h \
     windowprotocol.h \
-    UHVWorker/errorannouncement.h \
-    UHVWorker/messagereceiveandemitout.h \
-    UHVWorker/serialportconnectionestablishment.h \
-    UHVWorker/serialportinforequest.h \
-    UHVWorker/serialportinfovalidation.h \
-    UHVWorker/solitarymessagetransmission.h \
-    UHVWorker/uhvworker.h \
-    UHVWorker/uhvworkerdirectstatetransition.h \
-    UHVWorker/uhvworkervarset.h \
-    pilocaldbworker.h \
-    canprotocol.h \
-    UHVPVICollector/directtransition.h \
-    UHVPVICollector/emitreadi.h \
-    UHVPVICollector/emitreadp.h \
-    UHVPVICollector/emitreadv.h \
-    UHVPVICollector/idle.h \
-    UHVPVICollector/uhvpvicollector.h \
-    UHVPVICollector/uhvpvicollectordb.h \
-    UHVPVICollector/wait4i.h \
-    UHVPVICollector/wait4p.h \
-    UHVPVICollector/wait4v.h \
     piLocalDBWorker/connectdatabase.h \
     piLocalDBWorker/directtransition.h \
     piLocalDBWorker/pilocaldbworker.h \
@@ -95,8 +74,27 @@ HEADERS += \
     piLocalDBWorker/updatelocaldatabase.h \
     piLocalDBWorker/updateonlinedatabase.h \
     piLocalDBWorker/wait4errorhandler.h \
+    SerialPortWorker/connectserialport.h \
+    SerialPortWorker/directtransition4serialportworkerstate.h \
+    SerialPortWorker/readbytes.h \
+    SerialPortWorker/requestserialportinfo.h \
+    SerialPortWorker/serialportworker.h \
+    SerialPortWorker/serialportworkerproperty.h \
+    SerialPortWorker/validateserialportinfo.h \
+    SerialPortWorker/wait4errorhandler.h \
+    SerialPortWorker/writebytes.h \
+    SmallCoordinator/smallcoordinator.h \
     SmallCoordinator/smallcoordinatordb.h \
-    SmallCoordinator/smallcoordinator.h
+    UHVPVICollector/directtransitionforuhvpvicollectorstate.h \
+    UHVPVICollector/emitreadi.h \
+    UHVPVICollector/emitreadp.h \
+    UHVPVICollector/emitreadv.h \
+    UHVPVICollector/idle.h \
+    UHVPVICollector/uhvpvicollector.h \
+    UHVPVICollector/uhvpvicollectordb.h \
+    UHVPVICollector/wait4i.h \
+    UHVPVICollector/wait4p.h \
+    UHVPVICollector/wait4v.h
 
 FORMS += \
         mainwindow.ui
