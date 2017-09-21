@@ -8,7 +8,7 @@ QT       += core gui serialport serialbus sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += -std=c++11 console
-TARGET = SmallCoordinator
+TARGET = ExecSmallCoordinator
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -57,7 +57,9 @@ SOURCES += \
     UHVPVICollector/uhvpvicollectordb.cpp \
     UHVPVICollector/wait4i.cpp \
     UHVPVICollector/wait4p.cpp \
-    UHVPVICollector/wait4v.cpp
+    UHVPVICollector/wait4v.cpp \
+    SmallCoordinator/coordinateglobalsignals.cpp \
+    SmallCoordinator/wait4readyworkers.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -94,7 +96,9 @@ HEADERS += \
     UHVPVICollector/uhvpvicollectordb.h \
     UHVPVICollector/wait4i.h \
     UHVPVICollector/wait4p.h \
-    UHVPVICollector/wait4v.h
+    UHVPVICollector/wait4v.h \
+    SmallCoordinator/coordinateglobalsignals.h \
+    SmallCoordinator/wait4readyworkers.h
 
 FORMS += \
         mainwindow.ui
