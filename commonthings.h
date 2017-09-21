@@ -84,9 +84,11 @@ typedef struct
     QVariant Data;
     QString Key = "NULL";
     QList<QString> DstStrs;
-    quint8 Priority = 0;
+    qint16 Priority = 0;
+    qint16 SignalPriority = 0;
 } GlobalSignal;
-
 Q_DECLARE_METATYPE(GlobalSignal)
+
+#define registerGlobalSignal qRegisterMetaType<GlobalSignal>("GlobalSignal");
 
 #endif // COMMONTHINGS_H
