@@ -1,12 +1,12 @@
-#include "directtransition.h"
+#include "directtransition4pilocaldbworkerstate.h"
 
-directTransition::directTransition(piLocalDBWorkerVarSet *database, QAbstractState *destinationState) :
+directTransition4piLocalDBWorkerState::directTransition4piLocalDBWorkerState(piLocalDBWorkerVarSet *database, QAbstractState *destinationState) :
     QSignalTransition(database, &piLocalDBWorkerVarSet::directTransitionRequest)
 {
     this->setTargetState(destinationState);
 }
 
-bool directTransition::eventTest(QEvent *e)
+bool directTransition4piLocalDBWorkerState::eventTest(QEvent *e)
 {
     if (!(QSignalTransition::eventTest(e) && this->targetState()))
         return false;

@@ -19,13 +19,13 @@ piLocalDBWorker::piLocalDBWorker(QObject *parent) : QStateMachine(parent)
 
     state1->addTransition(currentVarSet, &piLocalDBWorkerVarSet::DatabaseConnected, state2);
     state2->addTransition(currentVarSet, &piLocalDBWorkerVarSet::firstGlobalSignalAdded, state2);
-    state2->addTransition(new directTransition(currentVarSet,state3));
-    state3->addTransition(new directTransition(currentVarSet,state2));
+    state2->addTransition(new directTransition4piLocalDBWorkerState(currentVarSet,state3));
+    state3->addTransition(new directTransition4piLocalDBWorkerState(currentVarSet,state2));
     state3->addTransition(currentVarSet, &piLocalDBWorkerVarSet::jsonPackageTransmitted, state4);
-    state4->addTransition(new directTransition(currentVarSet,state2));
+    state4->addTransition(new directTransition4piLocalDBWorkerState(currentVarSet,state2));
 
-    wait4ErrorHandler * state7 = new wait4ErrorHandler(currentVarSet);
-    state7->setObjectName("wait4ErrorHandler");
+    wait4ErrorHandler4piLocalDBWorker * state7 = new wait4ErrorHandler4piLocalDBWorker(currentVarSet);
+    state7->setObjectName("wait4ErrorHandler4piLocalDBWorker");
 
     main->setInitialState(state1);
     main->addTransition(currentVarSet, &piLocalDBWorkerVarSet::ErrorOccurred, state7);
