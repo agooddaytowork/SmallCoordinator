@@ -19,7 +19,8 @@ public:
     enum Data
     {
         NoData = 0,
-        pauseAllCollectors
+        pauseAllCollectors,
+        setWorkersReadyFlag
     };
     Q_ENUM(Data)
 

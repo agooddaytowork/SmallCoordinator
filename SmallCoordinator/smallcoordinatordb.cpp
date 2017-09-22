@@ -20,7 +20,7 @@ void SmallCoordinatorDB::setError(const SmallCoordinatorDB::Error &anErrorType, 
 {
     if (anErrorType!=NoError)
     {
-        anIf(SerialPortWorkerPropertyDbgEn, anWarn("Error Occurred !"));
+        anIf(SmallCoordinatorDBDbgEn, anWarn("Error Occurred !"));
         ErrorType = anErrorType;
         ErrorInfo = anErrorInfo;
         emit ErrorOccurred();
@@ -29,7 +29,7 @@ void SmallCoordinatorDB::setError(const SmallCoordinatorDB::Error &anErrorType, 
 
 void SmallCoordinatorDB::clearError()
 {
-    anIf(SerialPortWorkerPropertyDbgEn && (ErrorType!=NoError), anInfo("Clear Error !"));
+    anIf(SmallCoordinatorDBDbgEn && (ErrorType!=NoError), anInfo("Clear Error !"));
     ErrorType = NoError;
     ErrorInfo.clear();
 }
@@ -136,6 +136,42 @@ void SmallCoordinatorDB::executeGlobalSignals()
                     case SmallCoordinatorDB::pauseAllCollectors:
                     {
 
+                        break;
+                    }
+                    case SmallCoordinatorDB::setWorkersReadyFlag:
+                    {
+                        anIf(SmallCoordinatorDBDbgEn, anAck("setWorkersReadyFlag"));
+                        QString FlagName = currentGlobalSignal.Data.toString();
+                        if (FlagName == piLocalDBWorkerObjName)
+                        {
+                            isPiLocalDBWorkerReady = true;
+                            anIf(SmallCoordinatorDBDbgEn, anVar(isPiLocalDBWorkerReady));
+                        }
+                        else if (FlagName == UHV2WorkerObjName)
+                        {
+                            isUHV2WorkerReady = true;
+                            anIf(SmallCoordinatorDBDbgEn, anVar(isUHV2WorkerReady));
+                        }
+                        else if (FlagName == UHV4WorkerObjName)
+                        {
+                            isUHV4WorkerReady = true;
+                            anIf(SmallCoordinatorDBDbgEn, anVar(isUHV4WorkerReady));
+                        }
+                        else if (FlagName == UHV2PVICollectorObjName)
+                        {
+                            isUHV2PVICollectorReady = true;
+                            anIf(SmallCoordinatorDBDbgEn, anVar(isUHV2PVICollectorReady));
+                        }
+                        else if (FlagName == UHV4PVICollectorObjName)
+                        {
+                            isUHV4PVICollectorReady = true;
+                            anIf(SmallCoordinatorDBDbgEn, anVar(isUHV4PVICollectorReady));
+                        }
+                        if (isPiLocalDBWorkerReady && isUHV2WorkerReady && isUHV4WorkerReady && isUHV2PVICollectorReady & isUHV4PVICollectorReady)
+                        {
+                            anIf(SmallCoordinatorDBDbgEn, anAck("All Workers Is Ready !"));
+                            emit allWorkersReady();
+                        }
                         break;
                     }
                     default:

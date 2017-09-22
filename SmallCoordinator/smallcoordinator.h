@@ -16,6 +16,7 @@ signals:
     void ToUHV2PVICollector(const GlobalSignal &);
     void ToUHV4PVICollector(const GlobalSignal &);
     void ToPiLocalDBWorker(const GlobalSignal &);
+    void Ready();
 public slots:
     void FromUHV2Worker(const GlobalSignal &aGlobalSignal);
     void FromUHV4Worker(const GlobalSignal &aGlobalSignal);
