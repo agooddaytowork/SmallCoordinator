@@ -20,7 +20,8 @@ public:
     {
         NoData = 0,
         pauseAllCollectors,
-        setWorkersReadyFlag
+        resumeAllCollectors,
+        resumeUHVPVICollectors
     };
     Q_ENUM(Data)
 
@@ -52,8 +53,7 @@ public:
     void clearEmptyList();
     void clearCache();
     void clearPrioritizedBuffer();
-
-    void executeGlobalSignals();
+    void checkIfAllWorkersReady();
 
     QMap<quint8,QList<GlobalSignal>> prioritizedBuffer;
     Error ErrorType = NoError;
@@ -71,15 +71,19 @@ public:
     static const QMetaEnum NotificationMetaEnum;
 
 signals:
+    void ErrorOccurred();
     void allWorkersReady();
     void firstGlobalSignalAdded();
     void oneGlobalSignalAdded();
+    void requestDirectTransition(const QString &);
     void ToUHV2Worker(const GlobalSignal &);
     void ToUHV4Worker(const GlobalSignal &);
     void ToUHV2PVICollector(const GlobalSignal &);
     void ToUHV4PVICollector(const GlobalSignal &);
     void ToPiLocalDBWorker(const GlobalSignal &);
 public slots:
+    void executeGlobalSignals();
+    void emitErrorGlobalSignal();
 private:
 
     //Cache

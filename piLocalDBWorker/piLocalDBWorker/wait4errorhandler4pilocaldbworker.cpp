@@ -11,11 +11,13 @@ wait4ErrorHandler4piLocalDBWorker::wait4ErrorHandler4piLocalDBWorker(piLocalDBWo
 
 void wait4ErrorHandler4piLocalDBWorker::onEntry(QEvent *)
 {
-    anIf(piLocalDBWorkerVarSetDbgEn, anTrk("Enter wait4ErrorHandler4piLocalDBWorker"));
+    anIf(piLocalDBWorkerVarSetDbgEn, anTrk("wait4ErrorHandler4piLocalDBWorker Entered"));
+    emitErrorTimer.start();
 }
 
 void wait4ErrorHandler4piLocalDBWorker::onExit(QEvent *)
 {
     anIf(piLocalDBWorkerVarSetDbgEn, anTrk("Leave wait4ErrorHandler4piLocalDBWorker"));
+    emitErrorTimer.stop();
     VarSetPtr->clearError();
 }

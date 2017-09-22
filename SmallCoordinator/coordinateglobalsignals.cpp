@@ -4,6 +4,14 @@ coordinateGlobalSignals::coordinateGlobalSignals(SmallCoordinatorDB *database, Q
     QState(parent),
     dbPtr(database)
 {
+    timer.setParent(this);
+    timer.setInterval(30000);
+    timer.setSingleShot(true);
+    QObject::connect(&timer, &QTimer::timeout, this, [&](){
+        GlobalSignal resumeAllAutoCollectors;
+        resumeAllAutoCollectors.Type = QVariant::fromValue(SmallCoordinatorDB::resumeAllCollectors);
+        dbPtr->addOneGlobalSignal(resumeAllAutoCollectors);
+    });
     anIf(SmallCoordinatorDBDbgEn, anTrk("coordinateGlobalSignals Constructed"));
 }
 
@@ -14,7 +22,13 @@ void coordinateGlobalSignals::onEntry(QEvent *)
     {
         dbPtr->executeGlobalSignals();
         qApp->processEvents();
-
+        emit dbPtr->requestDirectTransition("coordinateGlobalSignals");
+        dbPtr->takeOutFirstOfMostPrioritizedGlobalSignals();
+    }
+    else
+    {
+        anIf(SmallCoordinatorDBDbgEn, anInfo("Buffer Is Empty"));
+        timer.start();
     }
 }
 

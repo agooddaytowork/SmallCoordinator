@@ -5,6 +5,11 @@
 
 #include <QStateMachine>
 #include "smallcoordinatordb.h"
+#include "directtransitionforsmallcoordinatorstate.h"
+#include "wait4readyworkers.h"
+#include "coordinateglobalsignals.h"
+#include "wait4errorhandler4smallcoordinator.h"
+
 
 class SmallCoordinator : public QStateMachine
 {
@@ -18,11 +23,7 @@ signals:
     void ToPiLocalDBWorker(const GlobalSignal &);
     void Ready();
 public slots:
-    void FromUHV2Worker(const GlobalSignal &aGlobalSignal);
-    void FromUHV4Worker(const GlobalSignal &aGlobalSignal);
-    void FromUHV2PVICollector(const GlobalSignal &aGlobalSignal);
-    void FromUHV4PVICollector(const GlobalSignal &aGlobalSignal);
-    void FrompiLocalDBWorker(const GlobalSignal &aGlobalSignal);
+    void In(const GlobalSignal &aGlobalSignal);
 private:
     SmallCoordinatorDB * CurrentDb = Q_NULLPTR;
 };

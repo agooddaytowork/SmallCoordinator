@@ -21,6 +21,11 @@ void connectSerialPort::onEntry(QEvent *)
         GlobalSignal notifySerialPortConnected;
         notifySerialPortConnected.Type = QVariant::fromValue(SerialPortWorkerProperty::SerialPortConnected);
         emit currentProperty->Out(notifySerialPortConnected);
+        GlobalSignal iamReady;
+        iamReady.Type = QVariant::fromValue(SerialPortWorkerProperty::readyToWork);
+        iamReady.Data = QVariant::fromValue(this->machine()->objectName());
+        iamReady.SignalPriority = 100;
+        emit currentProperty->Out(iamReady);
         emit currentProperty->requestDirectTransitionForSerialPortWorkerState("writeBytes");
     }
     else

@@ -37,7 +37,10 @@ piLocalDBWorker::piLocalDBWorker(QObject *parent) : QStateMachine(parent)
     anIf(piLocalDBWorkerDbgEn, anTrk("piLocalDBWorker Constructed"));
 }
 
-void piLocalDBWorker::In(const GlobalSignal &)
+void piLocalDBWorker::In(const GlobalSignal &aGlobalSignal)
 {
-
+    if (aGlobalSignal.Type.typeName() == QStringLiteral("piLocalDBWorkerVarSet::Data"))
+    {
+        currentVarSet->addOneGlobalSignal(aGlobalSignal);
+    }
 }

@@ -37,6 +37,11 @@ bool piLocalDBWorkerVarSet::connectLocalDatabase()
         tmpQuery = QSqlQuery();
         tmpQuery2 = QSqlQuery();
         instantQuery = QSqlQuery();
+        GlobalSignal iamReady;
+        iamReady.Type = QVariant::fromValue(piLocalDBWorkerVarSet::readyToWork);
+        iamReady.Data = QVariant::fromValue(this->parent()->objectName());
+        iamReady.SignalPriority = 100;
+        emit Out(iamReady);
         emit DatabaseConnected();
         return true;
     }

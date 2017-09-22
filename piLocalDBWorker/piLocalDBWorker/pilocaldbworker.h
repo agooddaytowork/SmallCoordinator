@@ -21,7 +21,7 @@ public:
 signals:
     void Out(const GlobalSignal &);
 public slots:
-    void In(const GlobalSignal &);
+    void In(const GlobalSignal &aGlobalSignal);
 private:
     piLocalDBWorkerVarSet * currentVarSet = Q_NULLPTR;
 

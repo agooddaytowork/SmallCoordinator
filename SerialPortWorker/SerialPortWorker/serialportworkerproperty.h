@@ -55,7 +55,8 @@ public:
         SerialPortDisconnected,
         SerialPortConnected,
         BufferCleared,
-        BytesWritten
+        BytesWritten,
+        readyToWork
     };
     Q_ENUM(Notification)
 

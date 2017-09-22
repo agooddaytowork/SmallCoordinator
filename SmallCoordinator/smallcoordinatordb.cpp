@@ -99,6 +99,15 @@ void SmallCoordinatorDB::clearPrioritizedBuffer()
         prioritizedBuffer.clear();
 }
 
+void SmallCoordinatorDB::checkIfAllWorkersReady()
+{
+    if (isPiLocalDBWorkerReady && isUHV2WorkerReady && isUHV4WorkerReady && isUHV2PVICollectorReady & isUHV4PVICollectorReady)
+    {
+        anIf(SmallCoordinatorDBDbgEn, anAck("All Workers Is Ready !"));
+        emit allWorkersReady();
+    }
+}
+
 void SmallCoordinatorDB::executeGlobalSignals()
 {
     clearCache();
@@ -133,44 +142,79 @@ void SmallCoordinatorDB::executeGlobalSignals()
                 if (currentGlobalSignal.Type.typeName() == QStringLiteral("SmallCoordinatorDB::Data"))
                 {
                     switch (currentGlobalSignal.Type.toInt()) {
-                    case SmallCoordinatorDB::pauseAllCollectors:
+                    case SmallCoordinatorDB::resumeAllCollectors:
                     {
-
+                        GlobalSignal resumeUHVPVICollector;
+                        resumeUHVPVICollector.Type = QVariant::fromValue(UHVPVICollectorDB::resumeMachine);
+                        emit ToUHV2PVICollector(resumeUHVPVICollector);
+                        emit ToUHV4PVICollector(resumeUHVPVICollector);
+                        break;
+                    }                    
+                    default:
                         break;
                     }
-                    case SmallCoordinatorDB::setWorkersReadyFlag:
-                    {
-                        anIf(SmallCoordinatorDBDbgEn, anAck("setWorkersReadyFlag"));
-                        QString FlagName = currentGlobalSignal.Data.toString();
-                        if (FlagName == piLocalDBWorkerObjName)
+                }
+                else if (currentGlobalSignal.Type.typeName() == QStringLiteral("piLocalDBWorkerVarSet::Notification"))
+                {
+                    switch (currentGlobalSignal.Type.toInt()) {
+                    case piLocalDBWorkerVarSet::readyToWork:
+                    {                        
+                        anIf(SmallCoordinatorDBDbgEn, anAck("piLocalDBWorkerVarSet::readyToWork"));
+                        if (currentGlobalSignal.Data.toString() == piLocalDBWorkerObjName)
                         {
                             isPiLocalDBWorkerReady = true;
                             anIf(SmallCoordinatorDBDbgEn, anVar(isPiLocalDBWorkerReady));
+                            checkIfAllWorkersReady();
                         }
-                        else if (FlagName == UHV2WorkerObjName)
+                        break;
+                    }
+                    default:
+                        break;
+                    }
+                }
+                else if (currentGlobalSignal.Type.typeName() == QStringLiteral("SerialPortWorkerProperty::Notification"))
+                {
+                    switch (currentGlobalSignal.Type.toInt()) {
+                    case SerialPortWorkerProperty::readyToWork:
+                    {
+                        anIf(SmallCoordinatorDBDbgEn, anAck("SerialPortWorkerProperty::readyToWork"));
+                        QString WhoIsReadyToWork = currentGlobalSignal.Data.toString();
+                        if (WhoIsReadyToWork == UHV2WorkerObjName)
                         {
                             isUHV2WorkerReady = true;
                             anIf(SmallCoordinatorDBDbgEn, anVar(isUHV2WorkerReady));
+                            checkIfAllWorkersReady();
                         }
-                        else if (FlagName == UHV4WorkerObjName)
+                        else if (WhoIsReadyToWork == UHV4WorkerObjName)
                         {
                             isUHV4WorkerReady = true;
                             anIf(SmallCoordinatorDBDbgEn, anVar(isUHV4WorkerReady));
+                            checkIfAllWorkersReady();
                         }
-                        else if (FlagName == UHV2PVICollectorObjName)
+                        break;
+                    }
+                    default:
+                        break;
+                    }
+                }
+                else if (currentGlobalSignal.Type.typeName() == QStringLiteral("UHVPVICollectorDB::Notification"))
+                {
+                    switch (currentGlobalSignal.Type.toInt()) {
+                    case UHVPVICollectorDB::readyToWork:
+                    {
+                        anIf(SmallCoordinatorDBDbgEn, anAck("UHVPVICollectorDB::readyToWork"));
+                        QString WhoIsReadyToWork = currentGlobalSignal.Data.toString();
+                        if (WhoIsReadyToWork == UHV2PVICollectorObjName)
                         {
                             isUHV2PVICollectorReady = true;
                             anIf(SmallCoordinatorDBDbgEn, anVar(isUHV2PVICollectorReady));
+                            checkIfAllWorkersReady();
                         }
-                        else if (FlagName == UHV4PVICollectorObjName)
+                        else if (WhoIsReadyToWork == UHV4PVICollectorObjName)
                         {
                             isUHV4PVICollectorReady = true;
                             anIf(SmallCoordinatorDBDbgEn, anVar(isUHV4PVICollectorReady));
-                        }
-                        if (isPiLocalDBWorkerReady && isUHV2WorkerReady && isUHV4WorkerReady && isUHV2PVICollectorReady & isUHV4PVICollectorReady)
-                        {
-                            anIf(SmallCoordinatorDBDbgEn, anAck("All Workers Is Ready !"));
-                            emit allWorkersReady();
+                            checkIfAllWorkersReady();
                         }
                         break;
                     }
@@ -180,14 +224,22 @@ void SmallCoordinatorDB::executeGlobalSignals()
                 }
             }
         }
-        takeOutFirstOfMostPrioritizedGlobalSignals();
     }
 }
 
-
-
-
-
+void SmallCoordinatorDB::emitErrorGlobalSignal()
+{
+    anIf(SmallCoordinatorDBDbgEn,
+         anError("Emit SmallCoordinatorDB::Error");
+         anInfo("ErrorType: " + QString(SmallCoordinatorDB::ErrorMetaEnum.valueToKey(static_cast<int>(ErrorType))));
+         anInfo("ErrorInfo: " + ErrorInfo);
+    );
+    GlobalSignal errorGlobalSignal;
+    errorGlobalSignal.Type = QVariant::fromValue(ErrorType);
+    errorGlobalSignal.Data = QVariant::fromValue(ErrorInfo);
+    errorGlobalSignal.Priority = 200;
+    emit Out(errorGlobalSignal);
+}
 
 const QMetaEnum SmallCoordinatorDB::DataMetaEnum = QMetaEnum::fromType<SmallCoordinatorDB::Data>();
 const QMetaEnum SmallCoordinatorDB::ErrorMetaEnum = QMetaEnum::fromType<SmallCoordinatorDB::Error>();

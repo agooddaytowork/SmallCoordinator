@@ -55,7 +55,8 @@ public:
 
     enum Notification
     {
-        NoNotification = 0
+        NoNotification = 0,
+        readyToWork
     };
     Q_ENUM(Notification)
 

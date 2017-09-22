@@ -59,7 +59,9 @@ SOURCES += \
     UHVPVICollector/UHVPVICollector/uhvpvicollectordb.cpp \
     UHVPVICollector/UHVPVICollector/wait4i.cpp \
     UHVPVICollector/UHVPVICollector/wait4p.cpp \
-    UHVPVICollector/UHVPVICollector/wait4v.cpp
+    UHVPVICollector/UHVPVICollector/wait4v.cpp \
+    SmallCoordinator/directtransitionforsmallcoordinatorstate.cpp \
+    SmallCoordinator/wait4errorhandler4smallcoordinator.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -98,7 +100,9 @@ HEADERS += \
     UHVPVICollector/UHVPVICollector/uhvpvicollectordb.h \
     UHVPVICollector/UHVPVICollector/wait4i.h \
     UHVPVICollector/UHVPVICollector/wait4p.h \
-    UHVPVICollector/UHVPVICollector/wait4v.h
+    UHVPVICollector/UHVPVICollector/wait4v.h \
+    SmallCoordinator/directtransitionforsmallcoordinatorstate.h \
+    SmallCoordinator/wait4errorhandler4smallcoordinator.h
 
 FORMS += \
         mainwindow.ui

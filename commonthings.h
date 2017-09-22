@@ -91,11 +91,11 @@ Q_DECLARE_METATYPE(GlobalSignal)
 
 #define registerGlobalSignal qRegisterMetaType<GlobalSignal>("GlobalSignal");
 
-static constexpr const QString piLocalDBWorkerObjName = QStringLiteral("piLocalDBWorker");
-static constexpr const QString UHV2WorkerObjName = QStringLiteral("UHV2Worker");
-static constexpr const QString UHV4WorkerObjName = QStringLiteral("UHV4Worker");
-static constexpr const QString UHV2PVICollectorObjName = QStringLiteral("UHV2PVICollector");
-static constexpr const QString UHV4PVICollectorObjName = QStringLiteral("UHV4PVICollector");
-static constexpr const QString SmallCoordinatorObjName = QStringLiteral("SmallCoordinator");
+static const QString piLocalDBWorkerObjName = QStringLiteral("piLocalDBWorker");
+static const QString UHV2WorkerObjName = QStringLiteral("UHV2Worker");
+static const QString UHV4WorkerObjName = QStringLiteral("UHV4Worker");
+static const QString UHV2PVICollectorObjName = QStringLiteral("UHV2PVICollector");
+static const QString UHV4PVICollectorObjName = QStringLiteral("UHV4PVICollector");
+static const QString SmallCoordinatorObjName = QStringLiteral("SmallCoordinator");
 
 #endif // COMMONTHINGS_H

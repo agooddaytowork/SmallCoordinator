@@ -2,6 +2,7 @@
 #define COORDINATEGLOBALSIGNALS_H
 
 #include <QState>
+#include <QTimer>
 #include "smallcoordinatordb.h"
 
 class coordinateGlobalSignals : public QState
@@ -13,6 +14,7 @@ protected:
     void onExit(QEvent *) override;
 private:
     SmallCoordinatorDB * dbPtr;
+    QTimer timer;
 };
 
 #endif // COORDINATEGLOBALSIGNALS_H
