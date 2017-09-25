@@ -10,9 +10,9 @@
 #include "coordinateglobalsignals.h"
 #include "wait4errorhandler4smallcoordinator.h"
 
-
 class SmallCoordinator : public QStateMachine
 {
+    Q_OBJECT
 public:
     explicit SmallCoordinator(QObject *parent = nullptr);
 signals:
@@ -21,7 +21,8 @@ signals:
     void ToUHV2PVICollector(const GlobalSignal &);
     void ToUHV4PVICollector(const GlobalSignal &);
     void ToPiLocalDBWorker(const GlobalSignal &);
-    void Ready();
+    void getReady();
+    void Out(const GlobalSignal &);
 public slots:
     void In(const GlobalSignal &aGlobalSignal);
 private:

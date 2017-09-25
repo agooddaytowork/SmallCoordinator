@@ -67,6 +67,7 @@ public:
     quint8 currentPNo;
     quint8 currentCH;
     bool isAnUHV2;
+    bool isReady = false;
     QByteArray QBAReadP;
     QByteArray QBAReadV;
     QByteArray QBAReadI;

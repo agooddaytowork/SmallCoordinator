@@ -4,6 +4,7 @@ UHVPVICollector::UHVPVICollector(bool isUHV2, QObject *parent) : QStateMachine(p
 {    
     currentDb = new UHVPVICollectorDB(this);
     currentDb->isAnUHV2 = isUHV2;
+    QObject::connect(currentDb, &UHVPVICollectorDB::Out, this, &UHVPVICollector::Out);
 
     emitReadP * state1 = new emitReadP(currentDb);
     state1->setObjectName("emitReadP");
@@ -17,7 +18,7 @@ UHVPVICollector::UHVPVICollector(bool isUHV2, QObject *parent) : QStateMachine(p
     state5->setObjectName("emitReadI");
     wait4I * state6 = new wait4I(currentDb);
     state6->setObjectName("wait4I");
-    idleUHVPVICollector * state7 = new idleUHVPVICollector();
+    idleUHVPVICollector * state7 = new idleUHVPVICollector(currentDb);
     state7->setObjectName("idleUHVPVICollector");
 
     state1->addTransition(currentDb, &UHVPVICollectorDB::SignalToUHVEmitted, state2);
@@ -44,7 +45,6 @@ UHVPVICollector::UHVPVICollector(bool isUHV2, QObject *parent) : QStateMachine(p
     this->setInitialState(state7);
     this->setErrorState(state7);
 
-    QObject::connect(this, &UHVPVICollector::started, currentDb, &UHVPVICollectorDB::initialize);
     anIf(UHVPVICollectorDbgEn, anTrk("UHVPVICollector Constructed"));
 
 }

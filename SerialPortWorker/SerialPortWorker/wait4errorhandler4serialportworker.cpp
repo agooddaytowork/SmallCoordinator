@@ -8,6 +8,7 @@ wait4ErrorHandler4SerialPortWorker::wait4ErrorHandler4SerialPortWorker(SerialPor
     {
         timer.setParent(this);
         timer.setInterval(TimerIntervalInMilisecond);
+        timer.setSingleShot(true);
         QObject::connect(&timer, &QTimer::timeout
                         , this
                         , [instantProperty](){

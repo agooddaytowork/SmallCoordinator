@@ -2,11 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QThread>
-#include "UHVWorker/uhvworker.h"
-#include "UHVPVICollector/uhvpvicollector.h"
-#include "piLocalDBWorker/pilocaldbworker.h"
-#include "smallcoordinator.h"
 
 namespace Ui {
 class MainWindow;

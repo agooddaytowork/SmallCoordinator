@@ -14,11 +14,6 @@ bool UHVPVICollectorDB::initialize()
         currentGlobalID = 0;
         currentQuery = QSqlQuery();
         previousReadState = "emitReadP";
-        GlobalSignal iamReady;
-        iamReady.Type = QVariant::fromValue(UHVPVICollectorDB::readyToWork);
-        iamReady.Data = QVariant::fromValue(this->parent()->objectName());
-        iamReady.SignalPriority = 100;
-        emit Out(iamReady);
     }
     else
     {
@@ -27,6 +22,7 @@ bool UHVPVICollectorDB::initialize()
         return false;
     }
     anIf(UHVPVICollectorDBDbgEn, anAck("OK Initialized !"));
+    isReady = true;
     return true;
 }
 

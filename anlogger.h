@@ -13,7 +13,7 @@
 //If _anLoggerSafeModeForWindowsEnabled Is Set,
 //Then Logger Message Text Attribute Is Disabled
 //In Return For Thread-Safe Operation
-#define _anLoggerSafeModeForWindowsEnabled 0
+#define _anLoggerSafeModeForWindowsEnabled 1
 //_anLoggerVividModeForLinuxEnabled is only used for linux
 //If _anLoggerVividModeForLinuxEnabled Is Set,
 //Then Logger Message Text Becomes Bold And Brighter
@@ -177,18 +177,17 @@ static char anStdErrBuffer[BUFSIZ];
     #endif
 
     #if _anTimePositionEnabled
-        #define __anElapsedTimeNSEC__\
-            std::chrono::duration_cast<std::chrono::nanoseconds>(\
-                std::chrono::steady_clock::now() - __anStartTimePoint__).count()
+        using stdChronoDurationInNanoSec = std::chrono::duration<float,std::nano>;
+        #define __anElapsedTimeNSEC__ stdChronoDurationInNanoSec(std::chrono::steady_clock::now() - __anStartTimePoint__).count()
     #endif
 
     inline static const std::string anCurrentMessagePath(
             #if _anTimePositionEnabled
                 #if _anFunctionPositionEnabled || _anFilePositionEnabled\
                     || _anLinePositionEnabled || _anThreadIdPositionEnabled
-                    const unsigned long int &currentElapsedTime,
+                    const float &currentElapsedTime,
                 #else
-                    const unsigned long int &currentElapsedTime
+                    const float &currentElapsedTime
                 #endif
             #endif
             #if _anThreadIdPositionEnabled

@@ -40,6 +40,7 @@ bool piLocalDBWorkerVarSet::connectLocalDatabase()
         GlobalSignal iamReady;
         iamReady.Type = QVariant::fromValue(piLocalDBWorkerVarSet::readyToWork);
         iamReady.Data = QVariant::fromValue(this->parent()->objectName());
+        iamReady.DstStrs.append(SmallCoordinatorObjName);
         iamReady.SignalPriority = 100;
         emit Out(iamReady);
         emit DatabaseConnected();
