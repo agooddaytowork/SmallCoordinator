@@ -60,14 +60,14 @@ int main(int argc, char *argv[])
     QObject::connect(smallcoordinatorThread, &QThread::started, smallcoordinator, &SmallCoordinator::start);
 
     QObject::connect(smallcoordinator, &SmallCoordinator::getReady, [&](){
-        piLocalDatabaseThread->start(QThread::HighPriority);
-        uhv2workerThread->start(QThread::HighPriority);
-        uhv4workerThread->start(QThread::HighPriority);
-        uhv2pvicollectorThread->start(QThread::NormalPriority);
-        uhv4pvicollectorThread->start(QThread::NormalPriority);
+        piLocalDatabaseThread->start();
+        uhv2workerThread->start();
+        uhv4workerThread->start();
+        uhv2pvicollectorThread->start();
+        uhv4pvicollectorThread->start();
     });
 
-    smallcoordinatorThread->start(QThread::HighestPriority);
+    smallcoordinatorThread->start();
 
 
     return a.exec();

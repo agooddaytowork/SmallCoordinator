@@ -10,6 +10,7 @@ coordinateGlobalSignals::coordinateGlobalSignals(SmallCoordinatorDB *database, Q
     QObject::connect(&timer, &QTimer::timeout, this, [&](){
         GlobalSignal resumeAllAutoCollectors;
         resumeAllAutoCollectors.Type = QVariant::fromValue(SmallCoordinatorDB::resumeAllCollectors);
+        resumeAllAutoCollectors.DstStrs.append(SmallCoordinatorObjName);
         dbPtr->addOneGlobalSignal(resumeAllAutoCollectors);
     });
     anIf(SmallCoordinatorDBDbgEn, anTrk("coordinateGlobalSignals Constructed"));
