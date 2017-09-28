@@ -83,7 +83,8 @@ signals:
     void DataFromUHVObtained();
     void MessageToDatabase(quint32 GlobalID, const QString &Pressure, const QString &Voltage, const QString &Current);
 public slots:
-    bool initialize();
+    void initialize();
+    bool connectDatabase();
     bool gotoNextRecord();
     void emitReadP();
     void emitReadV();

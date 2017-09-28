@@ -108,8 +108,8 @@ void piLocalDBWorkerVarSet::addOneGlobalSignal(const GlobalSignal &aGlobalSignal
 void piLocalDBWorkerVarSet::requestControlTableCheck()
 {
     instantQuery.exec("SELECT COUNT(*) AS TotalControlRequests FROM control");
-    instantQuery.next();
-    for (int i = 0; i<=(instantQuery.value("TotalControlRequests").toInt()); ++i)
+    instantQuery.first();
+    for (int i = instantQuery.value("TotalControlRequests").toInt(); i>0; --i)
     {
         addOneGlobalSignal(constGlobalSignalCheckControlTable);
     }

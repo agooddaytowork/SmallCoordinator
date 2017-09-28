@@ -22,6 +22,6 @@ void idleUHVPVICollector::onExit(QEvent *)
     anIf(UHVPVICollectorStateDbgEn, anTrk("Leave idleUHVPVICollector"));
     if (!(dbPtr->isReady))
     {
-        dbPtr->initialize();
+        dbPtr->connectDatabase();
     }
 }

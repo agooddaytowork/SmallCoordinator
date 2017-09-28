@@ -3,9 +3,15 @@
 UHVPVICollectorDB::UHVPVICollectorDB(QObject *parent) : QObject(parent)
 {
     anIf(UHVPVICollectorDBDbgEn, anTrk("Construct Object"));
+    initialize();
 }
 
-bool UHVPVICollectorDB::initialize()
+void UHVPVICollectorDB::initialize()
+{
+    previousReadState = "emitReadP";
+}
+
+bool UHVPVICollectorDB::connectDatabase()
 {
     localDb = QSqlDatabase::database();
     if (localDb.isOpen())
@@ -13,7 +19,6 @@ bool UHVPVICollectorDB::initialize()
         anIf(UHVPVICollectorDBDbgEn, anAck("OK Local Database Already Connected !"));
         currentGlobalID = 0;
         currentQuery = QSqlQuery();
-        previousReadState = "emitReadP";
     }
     else
     {
