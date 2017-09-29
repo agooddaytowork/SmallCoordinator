@@ -4,6 +4,8 @@
 #include <QHash>
 #include <QByteArray>
 #include <QVariant>
+#include <QSqlDatabase>
+#include "anlogger.h"
 
 inline QByteArray &operator <<(QByteArray &QBArr, const quint8 Data)
 {
@@ -91,11 +93,29 @@ Q_DECLARE_METATYPE(GlobalSignal)
 
 #define registerGlobalSignal qRegisterMetaType<GlobalSignal>("GlobalSignal");
 
-static const QString piLocalDBWorkerObjName = QStringLiteral("piLocalDBWorker");
+static const QString piLocalDBWorkerObjName = QStringLiteral("pilambdaReturnWorker");
 static const QString UHV2WorkerObjName = QStringLiteral("UHV2Worker");
 static const QString UHV4WorkerObjName = QStringLiteral("UHV4Worker");
 static const QString UHV2PVICollectorObjName = QStringLiteral("UHV2PVICollector");
 static const QString UHV4PVICollectorObjName = QStringLiteral("UHV4PVICollector");
 static const QString SmallCoordinatorObjName = QStringLiteral("SmallCoordinator");
+static const QSqlDatabase &localQSqlDatabase = [](){
+    QSqlDatabase lambdaReturn = QSqlDatabase::addDatabase("QMYSQL","originalLocalQSqlDatabaseConnection");
+    lambdaReturn.setHostName("localhost");
+    lambdaReturn.setDatabaseName("raspberry");
+    lambdaReturn.setUserName("root");
+    lambdaReturn.setPassword("Ascenx123");
+    lambdaReturn.setPort(3306);
+    if (lambdaReturn.open())
+    {
+        anAck("Local Database Connected !");
+    }
+    else
+    {
+        anError("Failed To Connect Local Database !");
+        exit(EXIT_FAILURE);
+    }
+    return lambdaReturn;
+}();
 
 #endif // COMMONTHINGS_H

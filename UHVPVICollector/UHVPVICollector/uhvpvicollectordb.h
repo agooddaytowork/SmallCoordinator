@@ -77,6 +77,7 @@ public:
 signals:
     void Out(const GlobalSignal &);
     void errorOccurred();
+    void DatabaseClosed();
     void pause();
     void directTransitionRequest(const QString &);
     void SignalToUHVEmitted();
@@ -98,6 +99,7 @@ public slots:
     void processDataFromPump(const QByteArray &data);
 private:
     QString getDataString();
+    void closeDatabaseConnection();
 };
 
 #endif // UHVPVICOLLECTORDB_H

@@ -24,12 +24,7 @@ void piLocalDBWorkerVarSet::dispose()
 bool piLocalDBWorkerVarSet::connectLocalDatabase()
 {
     closeLocalDatabaseConnection();
-    localDb = QSqlDatabase::addDatabase("QMYSQL");
-    localDb.setHostName("localhost");
-    localDb.setDatabaseName("raspberry");
-    localDb.setUserName("root");
-    localDb.setPassword("Ascenx123");
-    localDb.setPort(3306);
+    localDb = QSqlDatabase::cloneDatabase(localQSqlDatabase, this->parent()->objectName());
     if (localDb.open())
     {
         anIf(piLocalDBWorkerVarSetDbgEn, anAck("OK Local Database Connected !"));

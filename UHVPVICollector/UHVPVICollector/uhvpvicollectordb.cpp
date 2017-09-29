@@ -9,24 +9,25 @@ UHVPVICollectorDB::UHVPVICollectorDB(QObject *parent) : QObject(parent)
 void UHVPVICollectorDB::initialize()
 {
     previousReadState = "emitReadP";
+    anIf(UHVPVICollectorDBDbgEn, anAck("OK Initialized !"));
 }
 
 bool UHVPVICollectorDB::connectDatabase()
 {
-    localDb = QSqlDatabase::database();
-    if (localDb.isOpen())
+    closeDatabaseConnection();
+    localDb = QSqlDatabase::cloneDatabase(localQSqlDatabase, this->parent()->objectName());
+    if (localDb.open())
     {
-        anIf(UHVPVICollectorDBDbgEn, anAck("OK Local Database Already Connected !"));
+        anIf(UHVPVICollectorDBDbgEn, anAck("OK Local Database Connected !"));
         currentGlobalID = 0;
         currentQuery = QSqlQuery();
     }
     else
     {
-        anIf(UHVPVICollectorDBDbgEn, anError("Local Database Not Connected !"));
+        anIf(UHVPVICollectorDBDbgEn, anError("Failed To Connect Local Database !"));
         emit errorOccurred();
         return false;
-    }
-    anIf(UHVPVICollectorDBDbgEn, anAck("OK Initialized !"));
+    }    
     isReady = true;
     return true;
 }
@@ -34,8 +35,9 @@ bool UHVPVICollectorDB::connectDatabase()
 bool UHVPVICollectorDB::gotoNextRecord()
 {
     anIf(UHVPVICollectorDBDbgEn, anTrk("Retrieve New Record"));
-    currentQuery.exec("SELECT GlobalID,pumpAddr,pumpCH FROM stations WHERE GlobalID>" +
+    currentQuery.prepare("SELECT GlobalID,pumpAddr,pumpCH FROM stations WHERE GlobalID>" +
                         QString::number(currentGlobalID) + " ORDER BY GlobalID ASC LIMIT 1");
+    while (!currentQuery.exec());
     if (!currentQuery.next())
     {
         currentGlobalID = 0;
@@ -189,6 +191,19 @@ QString UHVPVICollectorDB::getDataString()
     {
         return QString(WindowProtocol::fromQByteArray(currentReplyFromPump).getDATAMean());
     }
+}
+
+void UHVPVICollectorDB::closeDatabaseConnection()
+{
+    QString currentConnection = localDb.connectionName();
+    localDb.close();
+    localDb = QSqlDatabase();
+    localDb.removeDatabase(currentConnection);
+    if (!currentConnection.isEmpty())
+    {
+        emit DatabaseClosed();
+    }
+    anIf(UHVPVICollectorDBDbgEn && (!currentConnection.isEmpty()), anAck("Local Database Connection Closed !"));
 }
 
 const QMetaEnum UHVPVICollectorDB::DataMetaEnum = QMetaEnum::fromType<UHVPVICollectorDB::Data>();
