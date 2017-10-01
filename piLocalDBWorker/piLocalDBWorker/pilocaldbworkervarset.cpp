@@ -28,10 +28,10 @@ bool piLocalDBWorkerVarSet::connectLocalDatabase()
     if (localDb.open())
     {
         anIf(piLocalDBWorkerVarSetDbgEn, anAck("OK Local Database Connected !"));
-        sourceQuery = QSqlQuery();
-        tmpQuery = QSqlQuery();
-        tmpQuery2 = QSqlQuery();
-        instantQuery = QSqlQuery();
+        sourceQuery = QSqlQuery(localDb);
+        tmpQuery = QSqlQuery(localDb);
+        tmpQuery2 = QSqlQuery(localDb);
+        instantQuery = QSqlQuery(localDb);
         GlobalSignal iamReady;
         iamReady.Type = QVariant::fromValue(piLocalDBWorkerVarSet::readyToWork);
         iamReady.Data = QVariant::fromValue(this->parent()->objectName());
@@ -263,8 +263,8 @@ const QJsonObject piLocalDBWorkerVarSet::createAJsonDataPackage(const QString &G
 
 const QJsonArray piLocalDBWorkerVarSet::getPendingJsonDataPackage()
 {
-    QSqlQuery tmpScopedSourceQuerry;
-    QSqlQuery tmpScopedQuerry;
+    QSqlQuery tmpScopedSourceQuerry(localDb);
+    QSqlQuery tmpScopedQuerry(localDb);
     QJsonArray tmpReturn;
     QString tmpScopedString;
     tmpScopedSourceQuerry.exec("SELECT RFID, setRoughValveOn, setHVOn, GlobalID FROM stations");

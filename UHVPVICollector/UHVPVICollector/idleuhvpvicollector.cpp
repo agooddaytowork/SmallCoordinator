@@ -10,18 +10,17 @@ void idleUHVPVICollector::onEntry(QEvent *)
     anIf(UHVPVICollectorStateDbgEn, anTrk("Enter idleUHVPVICollector"));
     if (!(dbPtr->isReady))
     {
-        GlobalSignal iamReady;
-        iamReady.Type = QVariant::fromValue(UHVPVICollectorDB::readyToWork);
-        iamReady.Data = QVariant::fromValue(this->machine()->objectName());
-        emit dbPtr->Out(iamReady);
+        if (dbPtr->connectDatabase())
+        {
+            GlobalSignal iamReady;
+            iamReady.Type = QVariant::fromValue(UHVPVICollectorDB::readyToWork);
+            iamReady.Data = QVariant::fromValue(this->machine()->objectName());
+            emit dbPtr->Out(iamReady);
+        }
     }
 }
 
 void idleUHVPVICollector::onExit(QEvent *)
 {
     anIf(UHVPVICollectorStateDbgEn, anTrk("Leave idleUHVPVICollector"));
-    if (!(dbPtr->isReady))
-    {
-        dbPtr->connectDatabase();
-    }
 }

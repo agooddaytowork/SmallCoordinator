@@ -35,7 +35,7 @@ inline QByteArray &operator <<(QByteArray &QBArr, const QByteArray &Data)
 }
 
 template <typename TN>
-const QHash<TN, QString> SwapKeyValOnOneToOneQHash(const QHash<QString, TN> &AQHashKeyValSet)
+inline const QHash<TN, QString> SwapKeyValOnOneToOneQHash(const QHash<QString, TN> &AQHashKeyValSet)
 {
     QHash<TN, QString> &tmp = * new QHash<TN, QString>();
     QString tmp2 = "";
@@ -48,7 +48,7 @@ const QHash<TN, QString> SwapKeyValOnOneToOneQHash(const QHash<QString, TN> &AQH
     return tmp;
 }
 
-inline static quint8 XORofAllBytesInQByteArr(const QByteArray &QBArr)
+inline quint8 XORofAllBytesInQByteArr(const QByteArray &QBArr)
 {
     if (!(QBArr.isNull() || QBArr.isEmpty()))
     {
@@ -71,7 +71,7 @@ inline static quint8 XORofAllBytesInQByteArr(const QByteArray &QBArr)
 /// \return QByteArray contains a hex number
 ///         representing an integer number encoded by Ascii code
 ///
-inline static const QByteArray IntStr2QBArr0Pad(const quint32 Num, const quint8 SizeInByte)
+inline const QByteArray IntStr2QBArr0Pad(const quint32 Num, const quint8 SizeInByte)
 {
     QString QStrTmp = QString::number(Num);
     return QStrTmp.prepend(QString("").fill('0',SizeInByte-QStrTmp.size())).toLocal8Bit();
@@ -93,29 +93,12 @@ Q_DECLARE_METATYPE(GlobalSignal)
 
 #define registerGlobalSignal qRegisterMetaType<GlobalSignal>("GlobalSignal");
 
-static const QString piLocalDBWorkerObjName = QStringLiteral("pilambdaReturnWorker");
-static const QString UHV2WorkerObjName = QStringLiteral("UHV2Worker");
-static const QString UHV4WorkerObjName = QStringLiteral("UHV4Worker");
-static const QString UHV2PVICollectorObjName = QStringLiteral("UHV2PVICollector");
-static const QString UHV4PVICollectorObjName = QStringLiteral("UHV4PVICollector");
-static const QString SmallCoordinatorObjName = QStringLiteral("SmallCoordinator");
-static const QSqlDatabase &localQSqlDatabase = [](){
-    QSqlDatabase lambdaReturn = QSqlDatabase::addDatabase("QMYSQL","originalLocalQSqlDatabaseConnection");
-    lambdaReturn.setHostName("localhost");
-    lambdaReturn.setDatabaseName("raspberry");
-    lambdaReturn.setUserName("root");
-    lambdaReturn.setPassword("Ascenx123");
-    lambdaReturn.setPort(3306);
-    if (lambdaReturn.open())
-    {
-        anAck("Local Database Connected !");
-    }
-    else
-    {
-        anError("Failed To Connect Local Database !");
-        exit(EXIT_FAILURE);
-    }
-    return lambdaReturn;
-}();
+extern const QString piLocalDBWorkerObjName;
+extern const QString UHV2WorkerObjName;
+extern const QString UHV4WorkerObjName;
+extern const QString UHV2PVICollectorObjName;
+extern const QString UHV4PVICollectorObjName;
+extern const QString SmallCoordinatorObjName;
+extern const QSqlDatabase &localQSqlDatabase;
 
 #endif // COMMONTHINGS_H

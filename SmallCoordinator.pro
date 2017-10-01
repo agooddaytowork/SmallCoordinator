@@ -61,7 +61,9 @@ SOURCES += \
     UHVPVICollector/UHVPVICollector/wait4p.cpp \
     UHVPVICollector/UHVPVICollector/wait4v.cpp \
     SmallCoordinator/directtransitionforsmallcoordinatorstate.cpp \
-    SmallCoordinator/wait4errorhandler4smallcoordinator.cpp
+    SmallCoordinator/wait4errorhandler4smallcoordinator.cpp \
+    commonthings.cpp \
+    anlogger.cpp
 
 HEADERS += \
         mainwindow.h \

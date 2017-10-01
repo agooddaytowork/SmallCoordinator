@@ -20,7 +20,7 @@ bool UHVPVICollectorDB::connectDatabase()
     {
         anIf(UHVPVICollectorDBDbgEn, anAck("OK Local Database Connected !"));
         currentGlobalID = 0;
-        currentQuery = QSqlQuery();
+        currentQuery = QSqlQuery(localDb);
     }
     else
     {
