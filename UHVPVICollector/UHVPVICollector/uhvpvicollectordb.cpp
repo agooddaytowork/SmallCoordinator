@@ -35,9 +35,8 @@ bool UHVPVICollectorDB::connectDatabase()
 bool UHVPVICollectorDB::gotoNextRecord()
 {
     anIf(UHVPVICollectorDBDbgEn, anTrk("Retrieve New Record"));
-    currentQuery.prepare("SELECT GlobalID,pumpAddr,pumpCH FROM stations WHERE GlobalID>" +
+    currentQuery.exec("SELECT GlobalID,pumpAddr,pumpCH FROM stations WHERE GlobalID>" +
                         QString::number(currentGlobalID) + " ORDER BY GlobalID ASC LIMIT 1");
-    while (!currentQuery.exec());
     if (!currentQuery.next())
     {
         currentGlobalID = 0;
