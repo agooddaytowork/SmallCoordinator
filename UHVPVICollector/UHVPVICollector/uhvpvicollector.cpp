@@ -2,8 +2,7 @@
 
 UHVPVICollector::UHVPVICollector(bool isUHV2, QObject *parent) : QStateMachine(parent)
 {    
-    currentDb = new UHVPVICollectorDB(this);
-    currentDb->isAnUHV2 = isUHV2;
+    currentDb = new UHVPVICollectorDB(isUHV2,this);
     QObject::connect(currentDb, &UHVPVICollectorDB::Out, this, &UHVPVICollector::Out);
 
     emitReadP * state1 = new emitReadP(currentDb);

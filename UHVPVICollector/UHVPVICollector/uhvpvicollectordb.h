@@ -20,7 +20,7 @@ class UHVPVICollectorDB : public QObject
 {
     Q_OBJECT
 public:
-    explicit UHVPVICollectorDB(QObject *parent = nullptr);
+    explicit UHVPVICollectorDB(bool isUHV2, QObject *parent = nullptr);
 
     enum Data {
         NoData = 0,
@@ -71,9 +71,7 @@ public:
     QByteArray QBAReadP;
     QByteArray QBAReadV;
     QByteArray QBAReadI;
-    GlobalSignal GS2UHVreadP;
-    GlobalSignal GS2UHVreadV;
-    GlobalSignal GS2UHVreadI;
+    GlobalSignal GS2UHV;
 signals:
     void Out(const GlobalSignal &);
     void errorOccurred();
@@ -98,6 +96,8 @@ public slots:
     void resume();
     void processDataFromPump(const QByteArray &data);
 private:
+    BinaryProtocol currentBP;
+    WindowProtocol currentWP;
     QString getDataString();
     void closeDatabaseConnection();
 };
