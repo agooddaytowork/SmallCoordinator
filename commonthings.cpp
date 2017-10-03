@@ -6,4 +6,4 @@ const QString UHV4WorkerObjName = QStringLiteral("UHV4Worker");
 const QString UHV2PVICollectorObjName = QStringLiteral("UHV2PVICollector");
 const QString UHV4PVICollectorObjName = QStringLiteral("UHV4PVICollector");
 const QString SmallCoordinatorObjName = QStringLiteral("SmallCoordinator");
-
+QSqlDatabase localQSqlDatabase = QSqlDatabase::addDatabase("QMYSQL","originalLocalQSqlDatabaseConnection");

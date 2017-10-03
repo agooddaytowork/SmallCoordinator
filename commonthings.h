@@ -99,6 +99,19 @@ extern const QString UHV4WorkerObjName;
 extern const QString UHV2PVICollectorObjName;
 extern const QString UHV4PVICollectorObjName;
 extern const QString SmallCoordinatorObjName;
-extern const QSqlDatabase &localQSqlDatabase;
+extern QSqlDatabase localQSqlDatabase;
+
+#define connectLocalQSqlDatabase {\
+        localQSqlDatabase.setHostName("localhost");\
+        localQSqlDatabase.setDatabaseName("raspberry");\
+        localQSqlDatabase.setUserName("root");\
+        localQSqlDatabase.setPassword("Ascenx123");\
+        localQSqlDatabase.setPort(3306);\
+        if (localQSqlDatabase.open()) {\
+            anAck("Local Database Connected !");\
+        } else {\
+            anError("Failed To Connect Local Database !");\
+            exit(EXIT_FAILURE);\
+        }}
 
 #endif // COMMONTHINGS_H
