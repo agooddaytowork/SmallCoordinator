@@ -30,16 +30,6 @@ SOURCES += \
     SmallCoordinator/smallcoordinatordb.cpp \
     SmallCoordinator/coordinateglobalsignals.cpp \
     SmallCoordinator/wait4readyworkers.cpp \
-    UHVPVICollector/UHVPVICollector/directtransitionforuhvpvicollectorstate.cpp \
-    UHVPVICollector/UHVPVICollector/emitreadi.cpp \
-    UHVPVICollector/UHVPVICollector/emitreadp.cpp \
-    UHVPVICollector/UHVPVICollector/emitreadv.cpp \
-    UHVPVICollector/UHVPVICollector/idleuhvpvicollector.cpp \
-    UHVPVICollector/UHVPVICollector/uhvpvicollector.cpp \
-    UHVPVICollector/UHVPVICollector/uhvpvicollectordb.cpp \
-    UHVPVICollector/UHVPVICollector/wait4i.cpp \
-    UHVPVICollector/UHVPVICollector/wait4p.cpp \
-    UHVPVICollector/UHVPVICollector/wait4v.cpp \
     SmallCoordinator/directtransitionforsmallcoordinatorstate.cpp \
     SmallCoordinator/wait4errorhandler4smallcoordinator.cpp \
     anLogger/src/anlogger.cpp \
@@ -63,7 +53,17 @@ SOURCES += \
     SerialPortWorker/src/serialportworkerproperty.cpp \
     SerialPortWorker/src/validateserialportinfo.cpp \
     SerialPortWorker/src/wait4errorhandler4serialportworker.cpp \
-    SerialPortWorker/src/writebytes.cpp
+    SerialPortWorker/src/writebytes.cpp \
+    UHVPVICollector/src/directtransitionforuhvpvicollectorstate.cpp \
+    UHVPVICollector/src/emitreadi.cpp \
+    UHVPVICollector/src/emitreadp.cpp \
+    UHVPVICollector/src/emitreadv.cpp \
+    UHVPVICollector/src/idleuhvpvicollector.cpp \
+    UHVPVICollector/src/uhvpvicollector.cpp \
+    UHVPVICollector/src/uhvpvicollectordb.cpp \
+    UHVPVICollector/src/wait4i.cpp \
+    UHVPVICollector/src/wait4p.cpp \
+    UHVPVICollector/src/wait4v.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -71,16 +71,6 @@ HEADERS += \
     SmallCoordinator/smallcoordinatordb.h \
     SmallCoordinator/coordinateglobalsignals.h \
     SmallCoordinator/wait4readyworkers.h \
-    UHVPVICollector/UHVPVICollector/directtransitionforuhvpvicollectorstate.h \
-    UHVPVICollector/UHVPVICollector/emitreadi.h \
-    UHVPVICollector/UHVPVICollector/emitreadp.h \
-    UHVPVICollector/UHVPVICollector/emitreadv.h \
-    UHVPVICollector/UHVPVICollector/idleuhvpvicollector.h \
-    UHVPVICollector/UHVPVICollector/uhvpvicollector.h \
-    UHVPVICollector/UHVPVICollector/uhvpvicollectordb.h \
-    UHVPVICollector/UHVPVICollector/wait4i.h \
-    UHVPVICollector/UHVPVICollector/wait4p.h \
-    UHVPVICollector/UHVPVICollector/wait4v.h \
     SmallCoordinator/directtransitionforsmallcoordinatorstate.h \
     SmallCoordinator/wait4errorhandler4smallcoordinator.h \
     anLogger/src/anlogger.h \
@@ -104,7 +94,17 @@ HEADERS += \
     SerialPortWorker/src/serialportworkerproperty.h \
     SerialPortWorker/src/validateserialportinfo.h \
     SerialPortWorker/src/wait4errorhandler4serialportworker.h \
-    SerialPortWorker/src/writebytes.h
+    SerialPortWorker/src/writebytes.h \
+    UHVPVICollector/src/directtransitionforuhvpvicollectorstate.h \
+    UHVPVICollector/src/emitreadi.h \
+    UHVPVICollector/src/emitreadp.h \
+    UHVPVICollector/src/emitreadv.h \
+    UHVPVICollector/src/idleuhvpvicollector.h \
+    UHVPVICollector/src/uhvpvicollector.h \
+    UHVPVICollector/src/uhvpvicollectordb.h \
+    UHVPVICollector/src/wait4i.h \
+    UHVPVICollector/src/wait4p.h \
+    UHVPVICollector/src/wait4v.h
 
 FORMS += \
         mainwindow.ui

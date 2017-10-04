@@ -3,7 +3,7 @@
 #include <QThread>
 #include "piLocalDBWorker/src/pilocaldbworker.h"
 #include "SerialPortWorker/src/serialportworker.h"
-#include "UHVPVICollector/UHVPVICollector/uhvpvicollector.h"
+#include "UHVPVICollector/src/uhvpvicollector.h"
 #include "SmallCoordinator/smallcoordinator.h"
 
 int main(int argc, char *argv[])

@@ -8,7 +8,7 @@
 #include "shared/commonthings.h"
 #include "piLocalDBWorker/src/pilocaldbworkervarset.h"
 #include "SerialPortWorker/src/serialportworkerproperty.h"
-#include "UHVPVICollector/UHVPVICollector/uhvpvicollectordb.h"
+#include "UHVPVICollector/src/uhvpvicollectordb.h"
 
 class SmallCoordinatorDB : public QObject
 {
