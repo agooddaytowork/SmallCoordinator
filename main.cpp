@@ -4,7 +4,7 @@
 #include "piLocalDBWorker/src/pilocaldbworker.h"
 #include "SerialPortWorker/src/serialportworker.h"
 #include "UHVPVICollector/src/uhvpvicollector.h"
-#include "SmallCoordinator/smallcoordinator.h"
+#include "src/smallcoordinator.h"
 
 int main(int argc, char *argv[])
 {

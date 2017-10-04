@@ -26,12 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    SmallCoordinator/smallcoordinator.cpp \
-    SmallCoordinator/smallcoordinatordb.cpp \
-    SmallCoordinator/coordinateglobalsignals.cpp \
-    SmallCoordinator/wait4readyworkers.cpp \
-    SmallCoordinator/directtransitionforsmallcoordinatorstate.cpp \
-    SmallCoordinator/wait4errorhandler4smallcoordinator.cpp \
     anLogger/src/anlogger.cpp \
     shared/commonthings.cpp \
     BinaryProtocol/src/binaryprotocol.cpp \
@@ -63,16 +57,16 @@ SOURCES += \
     UHVPVICollector/src/uhvpvicollectordb.cpp \
     UHVPVICollector/src/wait4i.cpp \
     UHVPVICollector/src/wait4p.cpp \
-    UHVPVICollector/src/wait4v.cpp
+    UHVPVICollector/src/wait4v.cpp \
+    src/coordinateglobalsignals.cpp \
+    src/directtransitionforsmallcoordinatorstate.cpp \
+    src/smallcoordinator.cpp \
+    src/smallcoordinatordb.cpp \
+    src/wait4errorhandler4smallcoordinator.cpp \
+    src/wait4readyworkers.cpp
 
 HEADERS += \
         mainwindow.h \
-    SmallCoordinator/smallcoordinator.h \
-    SmallCoordinator/smallcoordinatordb.h \
-    SmallCoordinator/coordinateglobalsignals.h \
-    SmallCoordinator/wait4readyworkers.h \
-    SmallCoordinator/directtransitionforsmallcoordinatorstate.h \
-    SmallCoordinator/wait4errorhandler4smallcoordinator.h \
     anLogger/src/anlogger.h \
     shared/commonthings.h \
     BinaryProtocol/src/binaryprotocol.h \
@@ -104,7 +98,13 @@ HEADERS += \
     UHVPVICollector/src/uhvpvicollectordb.h \
     UHVPVICollector/src/wait4i.h \
     UHVPVICollector/src/wait4p.h \
-    UHVPVICollector/src/wait4v.h
+    UHVPVICollector/src/wait4v.h \
+    src/coordinateglobalsignals.h \
+    src/directtransitionforsmallcoordinatorstate.h \
+    src/smallcoordinator.h \
+    src/smallcoordinatordb.h \
+    src/wait4errorhandler4smallcoordinator.h \
+    src/wait4readyworkers.h
 
 FORMS += \
         mainwindow.ui
