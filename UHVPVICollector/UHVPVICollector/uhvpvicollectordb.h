@@ -6,11 +6,11 @@
 
 #include <QObject>
 #include <QStateMachine>
-#include "anlogger.h"
+#include "anLogger/anlogger.h"
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QByteArray>
-#include "commonthings.h"
+#include "edctuCommons/commonthings.h"
 #include "binaryprotocol.h"
 #include "windowprotocol.h"
 #include "SerialPortWorker/SerialPortWorker/serialportworkerproperty.h"

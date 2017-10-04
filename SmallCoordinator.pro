@@ -62,15 +62,13 @@ SOURCES += \
     UHVPVICollector/UHVPVICollector/wait4v.cpp \
     SmallCoordinator/directtransitionforsmallcoordinatorstate.cpp \
     SmallCoordinator/wait4errorhandler4smallcoordinator.cpp \
-    commonthings.cpp \
-    anlogger.cpp
+    edctuCommons/commonthings.cpp \
+    anLogger/anlogger.cpp
 
 HEADERS += \
         mainwindow.h \
-    anlogger.h \
     binaryprotocol.h \
     canprotocol.h \
-    commonthings.h \
     windowprotocol.h \
     SmallCoordinator/smallcoordinator.h \
     SmallCoordinator/smallcoordinatordb.h \
@@ -104,7 +102,9 @@ HEADERS += \
     UHVPVICollector/UHVPVICollector/wait4p.h \
     UHVPVICollector/UHVPVICollector/wait4v.h \
     SmallCoordinator/directtransitionforsmallcoordinatorstate.h \
-    SmallCoordinator/wait4errorhandler4smallcoordinator.h
+    SmallCoordinator/wait4errorhandler4smallcoordinator.h \
+    edctuCommons/commonthings.h \
+    anLogger/anlogger.h
 
 FORMS += \
         mainwindow.ui

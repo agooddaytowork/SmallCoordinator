@@ -22,7 +22,7 @@
 #include "binaryprotocol.h"
 #include "windowprotocol.h"
 #include "canprotocol.h"
-#include "anlogger.h"
+#include "anLogger/anlogger.h"
 
 class piLocalDBWorkerVarSet : public QObject
 {

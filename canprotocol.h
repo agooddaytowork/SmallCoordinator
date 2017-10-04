@@ -4,8 +4,8 @@
 
 #include <QCanBusFrame>
 #include <QByteArray>
-#include "anlogger.h"
-#include "commonthings.h"
+#include "anLogger/anlogger.h"
+#include "edctuCommons/commonthings.h"
 
 
 class CanProtocol : public QCanBusFrame

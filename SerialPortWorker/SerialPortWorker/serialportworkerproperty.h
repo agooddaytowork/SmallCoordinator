@@ -12,8 +12,8 @@
 #include <QSerialPortInfo>
 #include <QMetaType>
 #include <QMetaEnum>
-#include "anlogger.h"
-#include "commonthings.h"
+#include "anLogger/anlogger.h"
+#include "edctuCommons/commonthings.h"
 
 class SerialPortWorkerProperty : public QObject
 {
