@@ -1,11 +1,11 @@
 #ifndef WINDOWPROTOCOL_H
 #define WINDOWPROTOCOL_H
 
-#define WindowProtocolDbgEn 0
+#define WindowProtocolDbgEn 1
 
 #include <QByteArray>
-#include "anLogger/anlogger.h"
-#include "edctuCommons/commonthings.h"
+#include "anLogger/src/anlogger.h"
+#include "shared/commonthings.h"
 
 class WindowProtocol
 {

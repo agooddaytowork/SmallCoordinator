@@ -26,9 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    binaryprotocol.cpp \
-    canprotocol.cpp \
-    windowprotocol.cpp \
     SmallCoordinator/smallcoordinator.cpp \
     SmallCoordinator/smallcoordinatordb.cpp \
     SmallCoordinator/coordinateglobalsignals.cpp \
@@ -62,14 +59,14 @@ SOURCES += \
     UHVPVICollector/UHVPVICollector/wait4v.cpp \
     SmallCoordinator/directtransitionforsmallcoordinatorstate.cpp \
     SmallCoordinator/wait4errorhandler4smallcoordinator.cpp \
-    edctuCommons/commonthings.cpp \
-    anLogger/anlogger.cpp
+    anLogger/src/anlogger.cpp \
+    shared/commonthings.cpp \
+    BinaryProtocol/src/binaryprotocol.cpp \
+    CanProtocol/src/canprotocol.cpp \
+    WindowProtocol/src/windowprotocol.cpp
 
 HEADERS += \
         mainwindow.h \
-    binaryprotocol.h \
-    canprotocol.h \
-    windowprotocol.h \
     SmallCoordinator/smallcoordinator.h \
     SmallCoordinator/smallcoordinatordb.h \
     SmallCoordinator/coordinateglobalsignals.h \
@@ -103,8 +100,11 @@ HEADERS += \
     UHVPVICollector/UHVPVICollector/wait4v.h \
     SmallCoordinator/directtransitionforsmallcoordinatorstate.h \
     SmallCoordinator/wait4errorhandler4smallcoordinator.h \
-    edctuCommons/commonthings.h \
-    anLogger/anlogger.h
+    anLogger/src/anlogger.h \
+    shared/commonthings.h \
+    BinaryProtocol/src/binaryprotocol.h \
+    CanProtocol/src/canprotocol.h \
+    WindowProtocol/src/windowprotocol.h
 
 FORMS += \
         mainwindow.ui

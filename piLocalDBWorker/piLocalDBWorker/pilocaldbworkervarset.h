@@ -19,10 +19,10 @@
 #include <QNetworkReply>
 #include <QMetaType>
 #include <QMetaEnum>
-#include "binaryprotocol.h"
-#include "windowprotocol.h"
-#include "canprotocol.h"
-#include "anLogger/anlogger.h"
+#include "BinaryProtocol/src/binaryprotocol.h"
+#include "WindowProtocol/src/windowprotocol.h"
+#include "CanProtocol/src/canprotocol.h"
+#include "anLogger/src/anlogger.h"
 
 class piLocalDBWorkerVarSet : public QObject
 {

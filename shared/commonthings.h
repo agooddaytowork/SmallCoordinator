@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <QVariant>
 #include <QSqlDatabase>
-#include "anLogger/anlogger.h"
+#include "anLogger/src/anlogger.h"
 
 inline QByteArray &operator <<(QByteArray &QBArr, const quint8 Data)
 {

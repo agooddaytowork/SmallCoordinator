@@ -6,13 +6,13 @@
 
 #include <QObject>
 #include <QStateMachine>
-#include "anLogger/anlogger.h"
+#include "anLogger/src/anlogger.h"
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QByteArray>
-#include "edctuCommons/commonthings.h"
-#include "binaryprotocol.h"
-#include "windowprotocol.h"
+#include "shared/commonthings.h"
+#include "BinaryProtocol/src/binaryprotocol.h"
+#include "WindowProtocol/src/windowprotocol.h"
 #include "SerialPortWorker/SerialPortWorker/serialportworkerproperty.h"
 #include "piLocalDBWorker/piLocalDBWorker/pilocaldbworkervarset.h"
 

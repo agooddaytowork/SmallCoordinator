@@ -4,8 +4,8 @@
 #define SmallCoordinatorDBDbgEn 1
 
 #include <QObject>
-#include "anLogger/anlogger.h"
-#include "edctuCommons/commonthings.h"
+#include "anLogger/src/anlogger.h"
+#include "shared/commonthings.h"
 #include "piLocalDBWorker/piLocalDBWorker/pilocaldbworkervarset.h"
 #include "SerialPortWorker/SerialPortWorker/serialportworkerproperty.h"
 #include "UHVPVICollector/UHVPVICollector/uhvpvicollectordb.h"
