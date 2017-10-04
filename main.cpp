@@ -2,7 +2,7 @@
 #include "mainwindow.h"
 #include <QThread>
 #include "piLocalDBWorker/src/pilocaldbworker.h"
-#include "SerialPortWorker/SerialPortWorker/serialportworker.h"
+#include "SerialPortWorker/src/serialportworker.h"
 #include "UHVPVICollector/UHVPVICollector/uhvpvicollector.h"
 #include "SmallCoordinator/smallcoordinator.h"
 

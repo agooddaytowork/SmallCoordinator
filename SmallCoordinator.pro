@@ -30,15 +30,6 @@ SOURCES += \
     SmallCoordinator/smallcoordinatordb.cpp \
     SmallCoordinator/coordinateglobalsignals.cpp \
     SmallCoordinator/wait4readyworkers.cpp \
-    SerialPortWorker/SerialPortWorker/connectserialport.cpp \
-    SerialPortWorker/SerialPortWorker/directtransition4serialportworkerstate.cpp \
-    SerialPortWorker/SerialPortWorker/readbytes.cpp \
-    SerialPortWorker/SerialPortWorker/requestserialportinfo.cpp \
-    SerialPortWorker/SerialPortWorker/serialportworker.cpp \
-    SerialPortWorker/SerialPortWorker/serialportworkerproperty.cpp \
-    SerialPortWorker/SerialPortWorker/validateserialportinfo.cpp \
-    SerialPortWorker/SerialPortWorker/wait4errorhandler4serialportworker.cpp \
-    SerialPortWorker/SerialPortWorker/writebytes.cpp \
     UHVPVICollector/UHVPVICollector/directtransitionforuhvpvicollectorstate.cpp \
     UHVPVICollector/UHVPVICollector/emitreadi.cpp \
     UHVPVICollector/UHVPVICollector/emitreadp.cpp \
@@ -63,7 +54,16 @@ SOURCES += \
     piLocalDBWorker/src/setissentcolumnonlocaldatabase.cpp \
     piLocalDBWorker/src/updatelocaldatabase.cpp \
     piLocalDBWorker/src/updateonlinedatabase.cpp \
-    piLocalDBWorker/src/wait4errorhandler4pilocaldbworker.cpp
+    piLocalDBWorker/src/wait4errorhandler4pilocaldbworker.cpp \
+    SerialPortWorker/src/connectserialport.cpp \
+    SerialPortWorker/src/directtransition4serialportworkerstate.cpp \
+    SerialPortWorker/src/readbytes.cpp \
+    SerialPortWorker/src/requestserialportinfo.cpp \
+    SerialPortWorker/src/serialportworker.cpp \
+    SerialPortWorker/src/serialportworkerproperty.cpp \
+    SerialPortWorker/src/validateserialportinfo.cpp \
+    SerialPortWorker/src/wait4errorhandler4serialportworker.cpp \
+    SerialPortWorker/src/writebytes.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -71,15 +71,6 @@ HEADERS += \
     SmallCoordinator/smallcoordinatordb.h \
     SmallCoordinator/coordinateglobalsignals.h \
     SmallCoordinator/wait4readyworkers.h \
-    SerialPortWorker/SerialPortWorker/connectserialport.h \
-    SerialPortWorker/SerialPortWorker/directtransition4serialportworkerstate.h \
-    SerialPortWorker/SerialPortWorker/readbytes.h \
-    SerialPortWorker/SerialPortWorker/requestserialportinfo.h \
-    SerialPortWorker/SerialPortWorker/serialportworker.h \
-    SerialPortWorker/SerialPortWorker/serialportworkerproperty.h \
-    SerialPortWorker/SerialPortWorker/validateserialportinfo.h \
-    SerialPortWorker/SerialPortWorker/wait4errorhandler4serialportworker.h \
-    SerialPortWorker/SerialPortWorker/writebytes.h \
     UHVPVICollector/UHVPVICollector/directtransitionforuhvpvicollectorstate.h \
     UHVPVICollector/UHVPVICollector/emitreadi.h \
     UHVPVICollector/UHVPVICollector/emitreadp.h \
@@ -104,7 +95,16 @@ HEADERS += \
     piLocalDBWorker/src/setissentcolumnonlocaldatabase.h \
     piLocalDBWorker/src/updatelocaldatabase.h \
     piLocalDBWorker/src/updateonlinedatabase.h \
-    piLocalDBWorker/src/wait4errorhandler4pilocaldbworker.h
+    piLocalDBWorker/src/wait4errorhandler4pilocaldbworker.h \
+    SerialPortWorker/src/connectserialport.h \
+    SerialPortWorker/src/directtransition4serialportworkerstate.h \
+    SerialPortWorker/src/readbytes.h \
+    SerialPortWorker/src/requestserialportinfo.h \
+    SerialPortWorker/src/serialportworker.h \
+    SerialPortWorker/src/serialportworkerproperty.h \
+    SerialPortWorker/src/validateserialportinfo.h \
+    SerialPortWorker/src/wait4errorhandler4serialportworker.h \
+    SerialPortWorker/src/writebytes.h
 
 FORMS += \
         mainwindow.ui
