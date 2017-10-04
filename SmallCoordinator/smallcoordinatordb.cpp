@@ -123,12 +123,20 @@ void SmallCoordinatorDB::In(const GlobalSignal &aGlobalSignal)
             replyUHVPortName.Type = QVariant::fromValue(SerialPortWorkerProperty::replyPortName);
             if (SenderName == UHV2WorkerObjName)
             {
+#ifdef __anWINOS__
                 replyUHVPortName.Data = QVariant::fromValue(QStringLiteral("COM3"));
+#else
+                replyUHVPortName.Data = QVariant::fromValue(QStringLiteral("ttyUSB0"));
+#endif
                 emit ToUHV2Worker(replyUHVPortName);
             }
             else if (SenderName == UHV4WorkerObjName)
             {
+#ifdef __anWINOS__
                 replyUHVPortName.Data = QVariant::fromValue(QStringLiteral("COM5"));
+#else
+                replyUHVPortName.Data = QVariant::fromValue(QStringLiteral("ttyUSB1"));
+#endif
                 emit ToUHV4Worker(replyUHVPortName);
             }
         }

@@ -6,7 +6,7 @@
 #include <QObject>
 #include "anLogger/src/anlogger.h"
 #include "shared/commonthings.h"
-#include "piLocalDBWorker/piLocalDBWorker/pilocaldbworkervarset.h"
+#include "piLocalDBWorker/src/pilocaldbworkervarset.h"
 #include "SerialPortWorker/SerialPortWorker/serialportworkerproperty.h"
 #include "UHVPVICollector/UHVPVICollector/uhvpvicollectordb.h"
 

@@ -19,6 +19,7 @@
 #include <QNetworkReply>
 #include <QMetaType>
 #include <QMetaEnum>
+#include "shared/commonthings.h"
 #include "BinaryProtocol/src/binaryprotocol.h"
 #include "WindowProtocol/src/windowprotocol.h"
 #include "CanProtocol/src/canprotocol.h"

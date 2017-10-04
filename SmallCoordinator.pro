@@ -30,14 +30,6 @@ SOURCES += \
     SmallCoordinator/smallcoordinatordb.cpp \
     SmallCoordinator/coordinateglobalsignals.cpp \
     SmallCoordinator/wait4readyworkers.cpp \
-    piLocalDBWorker/piLocalDBWorker/connectdatabase.cpp \
-    piLocalDBWorker/piLocalDBWorker/directtransition4pilocaldbworkerstate.cpp \
-    piLocalDBWorker/piLocalDBWorker/pilocaldbworker.cpp \
-    piLocalDBWorker/piLocalDBWorker/pilocaldbworkervarset.cpp \
-    piLocalDBWorker/piLocalDBWorker/setissentcolumnonlocaldatabase.cpp \
-    piLocalDBWorker/piLocalDBWorker/updatelocaldatabase.cpp \
-    piLocalDBWorker/piLocalDBWorker/updateonlinedatabase.cpp \
-    piLocalDBWorker/piLocalDBWorker/wait4errorhandler4pilocaldbworker.cpp \
     SerialPortWorker/SerialPortWorker/connectserialport.cpp \
     SerialPortWorker/SerialPortWorker/directtransition4serialportworkerstate.cpp \
     SerialPortWorker/SerialPortWorker/readbytes.cpp \
@@ -63,7 +55,15 @@ SOURCES += \
     shared/commonthings.cpp \
     BinaryProtocol/src/binaryprotocol.cpp \
     CanProtocol/src/canprotocol.cpp \
-    WindowProtocol/src/windowprotocol.cpp
+    WindowProtocol/src/windowprotocol.cpp \
+    piLocalDBWorker/src/connectdatabase.cpp \
+    piLocalDBWorker/src/directtransition4pilocaldbworkerstate.cpp \
+    piLocalDBWorker/src/pilocaldbworker.cpp \
+    piLocalDBWorker/src/pilocaldbworkervarset.cpp \
+    piLocalDBWorker/src/setissentcolumnonlocaldatabase.cpp \
+    piLocalDBWorker/src/updatelocaldatabase.cpp \
+    piLocalDBWorker/src/updateonlinedatabase.cpp \
+    piLocalDBWorker/src/wait4errorhandler4pilocaldbworker.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -71,14 +71,6 @@ HEADERS += \
     SmallCoordinator/smallcoordinatordb.h \
     SmallCoordinator/coordinateglobalsignals.h \
     SmallCoordinator/wait4readyworkers.h \
-    piLocalDBWorker/piLocalDBWorker/connectdatabase.h \
-    piLocalDBWorker/piLocalDBWorker/directtransition4pilocaldbworkerstate.h \
-    piLocalDBWorker/piLocalDBWorker/pilocaldbworker.h \
-    piLocalDBWorker/piLocalDBWorker/pilocaldbworkervarset.h \
-    piLocalDBWorker/piLocalDBWorker/setissentcolumnonlocaldatabase.h \
-    piLocalDBWorker/piLocalDBWorker/updatelocaldatabase.h \
-    piLocalDBWorker/piLocalDBWorker/updateonlinedatabase.h \
-    piLocalDBWorker/piLocalDBWorker/wait4errorhandler4pilocaldbworker.h \
     SerialPortWorker/SerialPortWorker/connectserialport.h \
     SerialPortWorker/SerialPortWorker/directtransition4serialportworkerstate.h \
     SerialPortWorker/SerialPortWorker/readbytes.h \
@@ -104,7 +96,15 @@ HEADERS += \
     shared/commonthings.h \
     BinaryProtocol/src/binaryprotocol.h \
     CanProtocol/src/canprotocol.h \
-    WindowProtocol/src/windowprotocol.h
+    WindowProtocol/src/windowprotocol.h \
+    piLocalDBWorker/src/connectdatabase.h \
+    piLocalDBWorker/src/directtransition4pilocaldbworkerstate.h \
+    piLocalDBWorker/src/pilocaldbworker.h \
+    piLocalDBWorker/src/pilocaldbworkervarset.h \
+    piLocalDBWorker/src/setissentcolumnonlocaldatabase.h \
+    piLocalDBWorker/src/updatelocaldatabase.h \
+    piLocalDBWorker/src/updateonlinedatabase.h \
+    piLocalDBWorker/src/wait4errorhandler4pilocaldbworker.h
 
 FORMS += \
         mainwindow.ui
