@@ -1,7 +1,7 @@
 #ifndef BINARYPROTOCOL_H
 #define BINARYPROTOCOL_H
 
-#define BinaryProtocolDbgEn 1
+#define BinaryProtocolDbgEn 0
 
 #include <QDebug>
 #include <QtMath>
