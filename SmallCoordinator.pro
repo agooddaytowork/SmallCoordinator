@@ -63,7 +63,9 @@ SOURCES += \
     src/smallcoordinator.cpp \
     src/smallcoordinatordb.cpp \
     src/wait4errorhandler4smallcoordinator.cpp \
-    src/wait4readyworkers.cpp
+    src/wait4readyworkers.cpp \
+    shared/abstractstatemachineproperty.cpp \
+    shared/directtransition.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -104,7 +106,9 @@ HEADERS += \
     src/smallcoordinator.h \
     src/smallcoordinatordb.h \
     src/wait4errorhandler4smallcoordinator.h \
-    src/wait4readyworkers.h
+    src/wait4readyworkers.h \
+    shared/abstractstatemachineproperty.h \
+    shared/directtransition.h
 
 FORMS += \
         mainwindow.ui
