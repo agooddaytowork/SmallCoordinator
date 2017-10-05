@@ -24,19 +24,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+        anlogger.cpp \
+        commonthings.cpp \
         main.cpp \
-        mainwindow.cpp \
-    binaryprotocol.cpp \
-    canprotocol.cpp \
-    windowprotocol.cpp \
-    SmallCoordinator/smallcoordinator.cpp \
-    SmallCoordinator/smallcoordinatordb.cpp \
-    SmallCoordinator/coordinateglobalsignals.cpp \
-    SmallCoordinator/wait4readyworkers.cpp \
-    SmallCoordinator/directtransitionforsmallcoordinatorstate.cpp \
-    SmallCoordinator/wait4errorhandler4smallcoordinator.cpp \
-    commonthings.cpp \
-    anlogger.cpp \
+        binaryprotocol.cpp \
+        canprotocol.cpp \
+        windowprotocol.cpp \
     piLocalDBWorker/connectdatabase.cpp \
     piLocalDBWorker/directtransition4pilocaldbworkerstate.cpp \
     piLocalDBWorker/pilocaldbworker.cpp \
@@ -63,21 +56,21 @@ SOURCES += \
     UHVPVICollector/uhvpvicollectordb.cpp \
     UHVPVICollector/wait4i.cpp \
     UHVPVICollector/wait4p.cpp \
-    UHVPVICollector/wait4v.cpp
+    UHVPVICollector/wait4v.cpp \
+    SmallCoordinator/smallcoordinator.cpp \
+    SmallCoordinator/smallcoordinatordb.cpp \
+    SmallCoordinator/coordinateglobalsignals.cpp \
+    SmallCoordinator/wait4readyworkers.cpp \
+    SmallCoordinator/directtransitionforsmallcoordinatorstate.cpp \
+    SmallCoordinator/wait4errorhandler4smallcoordinator.cpp \
+    mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
-    anlogger.h \
-    binaryprotocol.h \
-    canprotocol.h \
-    commonthings.h \
-    windowprotocol.h \
-    SmallCoordinator/smallcoordinator.h \
-    SmallCoordinator/smallcoordinatordb.h \
-    SmallCoordinator/coordinateglobalsignals.h \
-    SmallCoordinator/wait4readyworkers.h \
-    SmallCoordinator/directtransitionforsmallcoordinatorstate.h \
-    SmallCoordinator/wait4errorhandler4smallcoordinator.h \
+        anlogger.h \
+        commonthings.h \
+        binaryprotocol.h \
+        canprotocol.h \
+        windowprotocol.h \
     piLocalDBWorker/connectdatabase.h \
     piLocalDBWorker/directtransition4pilocaldbworkerstate.h \
     piLocalDBWorker/pilocaldbworker.h \
@@ -104,7 +97,14 @@ HEADERS += \
     UHVPVICollector/uhvpvicollectordb.h \
     UHVPVICollector/wait4i.h \
     UHVPVICollector/wait4p.h \
-    UHVPVICollector/wait4v.h
+    UHVPVICollector/wait4v.h \
+    SmallCoordinator/smallcoordinator.h \
+    SmallCoordinator/smallcoordinatordb.h \
+    SmallCoordinator/coordinateglobalsignals.h \
+    SmallCoordinator/wait4readyworkers.h \
+    SmallCoordinator/directtransitionforsmallcoordinatorstate.h \
+    SmallCoordinator/wait4errorhandler4smallcoordinator.h \
+    mainwindow.h
 
 FORMS += \
         mainwindow.ui
