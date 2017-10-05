@@ -6,9 +6,9 @@
 #include <QObject>
 #include "anlogger.h"
 #include "commonthings.h"
-#include "piLocalDBWorker/piLocalDBWorker/pilocaldbworkervarset.h"
-#include "SerialPortWorker/SerialPortWorker/serialportworkerproperty.h"
-#include "UHVPVICollector/UHVPVICollector/uhvpvicollectordb.h"
+#include "piLocalDBWorker/pilocaldbworkervarset.h"
+#include "SerialPortWorker/serialportworkerproperty.h"
+#include "UHVPVICollector/uhvpvicollectordb.h"
 
 class SmallCoordinatorDB : public QObject
 {

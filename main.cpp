@@ -1,9 +1,9 @@
 #include <QApplication>
 #include "mainwindow.h"
 #include <QThread>
-#include "piLocalDBWorker/piLocalDBWorker/pilocaldbworker.h"
-#include "SerialPortWorker/SerialPortWorker/serialportworker.h"
-#include "UHVPVICollector/UHVPVICollector/uhvpvicollector.h"
+#include "piLocalDBWorker/pilocaldbworker.h"
+#include "SerialPortWorker/serialportworker.h"
+#include "UHVPVICollector/uhvpvicollector.h"
 #include "SmallCoordinator/smallcoordinator.h"
 
 int main(int argc, char *argv[])
