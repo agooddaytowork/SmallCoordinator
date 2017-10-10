@@ -93,6 +93,8 @@ Q_DECLARE_METATYPE(GlobalSignal)
 
 #define registerGlobalSignal qRegisterMetaType<GlobalSignal>("GlobalSignal");
 
+extern const Qt::ConnectionType uniqueQtConnectionType;
+
 extern const QString piLocalDBWorkerObjName;
 extern const QString UHV2WorkerObjName;
 extern const QString UHV4WorkerObjName;

@@ -1,9 +1,9 @@
 #include "directtransition.h"
 
-directTransition::directTransition(const QObject &aSender, const char &aSignal, QAbstractState *aTarget) :
-    QSignalTransition(&aSender,&aSignal), setTargetState(aTarget)
+directTransition::directTransition(const QObject *aSender, const char *aSignal, QAbstractState *aTarget) :
+    QSignalTransition(aSender,aSignal)
 {
-
+    this->setTargetState(aTarget);
 }
 
 bool directTransition::eventTest(QEvent *e)
