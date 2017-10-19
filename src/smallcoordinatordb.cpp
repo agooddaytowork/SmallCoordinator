@@ -115,12 +115,12 @@ void SmallCoordinatorDB::In(const GlobalSignal &aGlobalSignal)
     {
         QString aGlobalSignalTypeTypeName = aGlobalSignal.Type.typeName();
         int aGlobalSignalTypeToInt = aGlobalSignal.Type.toInt();
-        if ((aGlobalSignalTypeTypeName==QStringLiteral("SerialPortWorkerProperty::Data"))
-                && (aGlobalSignalTypeToInt==SerialPortWorkerProperty::requestPortName))
+        if ((aGlobalSignalTypeTypeName==QStringLiteral("SerialPortWorkerBasis::Data"))
+                && (aGlobalSignalTypeToInt==SerialPortWorkerBasis::requestPortName))
         {
             QString SenderName = aGlobalSignal.Data.toString();
             GlobalSignal replyUHVPortName;
-            replyUHVPortName.Type = QVariant::fromValue(SerialPortWorkerProperty::replyPortName);
+            replyUHVPortName.Type = QVariant::fromValue(SerialPortWorkerBasis::replyPortName);
             if (SenderName == UHV2WorkerObjName)
             {
 #ifdef __anWINOS__
@@ -142,20 +142,20 @@ void SmallCoordinatorDB::In(const GlobalSignal &aGlobalSignal)
         }
         else
         {
-            if ((aGlobalSignalTypeTypeName == QStringLiteral("piLocalDBWorkerVarSet::Notification"))
-                    && (aGlobalSignalTypeToInt == piLocalDBWorkerVarSet::readyToWork))
+            if ((aGlobalSignalTypeTypeName == QStringLiteral("piLocalDBWorkerBasis::Notification"))
+                    && (aGlobalSignalTypeToInt == piLocalDBWorkerBasis::readyToWork))
             {
-                anIf(SmallCoordinatorDBDbgEn, anAck("piLocalDBWorkerVarSet::readyToWork"));
+                anIf(SmallCoordinatorDBDbgEn, anAck("piLocalDBWorkerBasis::readyToWork"));
                 if (aGlobalSignal.Data.toString() == piLocalDBWorkerObjName)
                 {
                     isPiLocalDBWorkerReady = true;
                     anIf(SmallCoordinatorDBDbgEn, anVar(isPiLocalDBWorkerReady));
                 }
             }
-            else if ((aGlobalSignalTypeTypeName == QStringLiteral("SerialPortWorkerProperty::Notification"))
-                        && (aGlobalSignalTypeToInt == SerialPortWorkerProperty::readyToWork))
+            else if ((aGlobalSignalTypeTypeName == QStringLiteral("SerialPortWorkerBasis::Notification"))
+                        && (aGlobalSignalTypeToInt == SerialPortWorkerBasis::readyToWork))
             {
-                anIf(SmallCoordinatorDBDbgEn, anAck("SerialPortWorkerProperty::readyToWork"));
+                anIf(SmallCoordinatorDBDbgEn, anAck("SerialPortWorkerBasis::readyToWork"));
                 QString WhoIsReadyToWork = aGlobalSignal.Data.toString();
                 if (WhoIsReadyToWork == UHV2WorkerObjName)
                 {
