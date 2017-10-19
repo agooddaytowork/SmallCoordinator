@@ -4,6 +4,7 @@
 #include "piLocalDBWorker/src/pilocaldbworker.h"
 #include "SerialPortWorker/src/serialportworker.h"
 #include "UHVPVICollector/src/uhvpvicollector.h"
+#include "CanBusWorker/src/canbusworker.h"
 #include "src/smallcoordinator.h"
 
 int main(int argc, char *argv[])
@@ -25,6 +26,8 @@ int main(int argc, char *argv[])
     uhv4pvicollector->setObjectName(UHV4PVICollectorObjName);
     piLocalDBWorker * piLocalDatabase = new piLocalDBWorker();
     piLocalDatabase->setObjectName(piLocalDBWorkerObjName);
+    CanBusWorker * canbusworker = new CanBusWorker();
+    canbusworker->setObjectName(CanBusWorkerObjName);
     SmallCoordinator * smallcoordinator = new SmallCoordinator();
     smallcoordinator->setObjectName(SmallCoordinatorObjName);
 
@@ -33,18 +36,21 @@ int main(int argc, char *argv[])
     QObject::connect(piLocalDatabase, &piLocalDBWorker::Out, smallcoordinator, &SmallCoordinator::In);
     QObject::connect(uhv2pvicollector, &UHVPVICollector::Out, smallcoordinator, &SmallCoordinator::In);
     QObject::connect(uhv4pvicollector, &UHVPVICollector::Out, smallcoordinator, &SmallCoordinator::In);
+    QObject::connect(canbusworker, &CanBusWorker::Out, smallcoordinator, &SmallCoordinator::In);
 
     QObject::connect(smallcoordinator, &SmallCoordinator::ToPiLocalDBWorker, piLocalDatabase, &piLocalDBWorker::In);
     QObject::connect(smallcoordinator, &SmallCoordinator::ToUHV2Worker, uhv2worker, &SerialPortWorker::In);
     QObject::connect(smallcoordinator, &SmallCoordinator::ToUHV4Worker, uhv4worker, &SerialPortWorker::In);
     QObject::connect(smallcoordinator, &SmallCoordinator::ToUHV2PVICollector, uhv2pvicollector, &UHVPVICollector::In);
     QObject::connect(smallcoordinator, &SmallCoordinator::ToUHV4PVICollector, uhv4pvicollector, &UHVPVICollector::In);
+    QObject::connect(smallcoordinator, &SmallCoordinator::ToCanBusWorker, canbusworker, &CanBusWorker::In);
 
     QThread * uhv2workerThread = new QThread();
     QThread * uhv4workerThread = new QThread();
     QThread * uhv2pvicollectorThread = new QThread();
     QThread * uhv4pvicollectorThread = new QThread();
     QThread * piLocalDatabaseThread = new QThread();
+    QThread * canbusworkerThread = new QThread();
     QThread * smallcoordinatorThread = new QThread();
 
     uhv2worker->moveToThread(uhv2workerThread);
@@ -52,6 +58,7 @@ int main(int argc, char *argv[])
     uhv2pvicollector->moveToThread(uhv2pvicollectorThread);
     uhv4pvicollector->moveToThread(uhv4pvicollectorThread);
     piLocalDatabase->moveToThread(piLocalDatabaseThread);
+    canbusworker->moveToThread(canbusworkerThread);
     smallcoordinator->moveToThread(smallcoordinatorThread);
 
     QObject::connect(uhv2workerThread, &QThread::started, uhv2worker, &SerialPortWorker::start);
@@ -59,6 +66,7 @@ int main(int argc, char *argv[])
     QObject::connect(uhv2pvicollectorThread, &QThread::started, uhv2pvicollector, &UHVPVICollector::start);
     QObject::connect(uhv4pvicollectorThread, &QThread::started, uhv4pvicollector, &UHVPVICollector::start);
     QObject::connect(piLocalDatabaseThread, &QThread::started, piLocalDatabase, &piLocalDBWorker::start);
+    QObject::connect(canbusworkerThread, &QThread::started, canbusworker, &CanBusWorker::start);
     QObject::connect(smallcoordinatorThread, &QThread::started, smallcoordinator, &SmallCoordinator::start);
 
     QObject::connect(smallcoordinator, &SmallCoordinator::getReady, [&](){
@@ -67,6 +75,7 @@ int main(int argc, char *argv[])
         uhv4workerThread->start();
         uhv2pvicollectorThread->start();
         uhv4pvicollectorThread->start();
+        canbusworkerThread->start();
     });
 
     smallcoordinatorThread->start();

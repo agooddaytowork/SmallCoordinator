@@ -109,6 +109,7 @@ extern const QString UHV2WorkerObjName;
 extern const QString UHV4WorkerObjName;
 extern const QString UHV2PVICollectorObjName;
 extern const QString UHV4PVICollectorObjName;
+extern const QString CanBusWorkerObjName;
 extern const QString SmallCoordinatorObjName;
 extern QSqlDatabase localQSqlDatabase;
 

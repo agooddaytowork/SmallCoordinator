@@ -8,6 +8,7 @@ SmallCoordinator::SmallCoordinator(QObject *parent) : QStateMachine(parent)
     QObject::connect(CurrentDb, &SmallCoordinatorDB::ToUHV4Worker, this, &SmallCoordinator::ToUHV4Worker);
     QObject::connect(CurrentDb, &SmallCoordinatorDB::ToUHV2PVICollector, this, &SmallCoordinator::ToUHV2PVICollector);
     QObject::connect(CurrentDb, &SmallCoordinatorDB::ToUHV4PVICollector, this, &SmallCoordinator::ToUHV4PVICollector);
+    QObject::connect(CurrentDb, &SmallCoordinatorDB::ToCanBusWorker, this, &SmallCoordinator::ToCanBusWorker);
     QObject::connect(CurrentDb, &SmallCoordinatorDB::Out, this, &SmallCoordinator::Out);
 
     QState * main = new QState();

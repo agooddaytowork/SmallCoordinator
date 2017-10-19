@@ -62,7 +62,15 @@ SOURCES += \
     UHVPVICollector/src/uhvpvicollectordb.cpp \
     UHVPVICollector/src/wait4i.cpp \
     UHVPVICollector/src/wait4p.cpp \
-    UHVPVICollector/src/wait4v.cpp
+    UHVPVICollector/src/wait4v.cpp \
+    CanBusWorker/src/canbusworker.cpp \
+    CanBusWorker/src/canbusworkerbasis.cpp \
+    CanBusWorker/src/errorcanbusworker.cpp \
+    CanBusWorker/src/frameiswritten.cpp \
+    CanBusWorker/src/idlecanbusworker.cpp \
+    CanBusWorker/src/runningcanbusworker.cpp \
+    CanBusWorker/src/uninitiatedcanbusworker.cpp \
+    CanBusWorker/src/writeframecanbusworker.cpp
 
 
 HEADERS += \
@@ -103,7 +111,15 @@ HEADERS += \
     UHVPVICollector/src/uhvpvicollectordb.h \
     UHVPVICollector/src/wait4i.h \
     UHVPVICollector/src/wait4p.h \
-    UHVPVICollector/src/wait4v.h
+    UHVPVICollector/src/wait4v.h \
+    CanBusWorker/src/canbusworker.h \
+    CanBusWorker/src/canbusworkerbasis.h \
+    CanBusWorker/src/errorcanbusworker.h \
+    CanBusWorker/src/frameiswritten.h \
+    CanBusWorker/src/idlecanbusworker.h \
+    CanBusWorker/src/runningcanbusworker.h \
+    CanBusWorker/src/uninitiatedcanbusworker.h \
+    CanBusWorker/src/writeframecanbusworker.h
 
 FORMS += \
         mainwindow.ui

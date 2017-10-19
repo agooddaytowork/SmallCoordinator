@@ -64,6 +64,7 @@ public:
     bool isUHV4WorkerReady  =false;
     bool isUHV2PVICollectorReady = false;
     bool isUHV4PVICollectorReady = false;
+    bool isCanBusWorkerReady = false;
     bool isAllWorkersReady = false;
 
     static const QMetaEnum DataMetaEnum;
@@ -83,6 +84,7 @@ signals:
     void ToUHV2PVICollector(const GlobalSignal &);
     void ToUHV4PVICollector(const GlobalSignal &);
     void ToPiLocalDBWorker(const GlobalSignal &);
+    void ToCanBusWorker(const GlobalSignal &);
 public slots:
     void In(const GlobalSignal &aGlobalSignal);
     void executeGlobalSignals();

@@ -101,7 +101,12 @@ void SmallCoordinatorDB::clearPrioritizedBuffer()
 
 void SmallCoordinatorDB::checkIfAllWorkersReady()
 {
-    if (isPiLocalDBWorkerReady && isUHV2WorkerReady && isUHV4WorkerReady && isUHV2PVICollectorReady & isUHV4PVICollectorReady)
+    if (isPiLocalDBWorkerReady &&
+            isUHV2WorkerReady &&
+            isUHV4WorkerReady &&
+            isUHV2PVICollectorReady &&
+            isUHV4PVICollectorReady &&
+            isCanBusWorkerReady)
     {
         anIf(SmallCoordinatorDBDbgEn, anAck("All Workers Is Ready !"));
         isAllWorkersReady = true;
@@ -184,6 +189,16 @@ void SmallCoordinatorDB::In(const GlobalSignal &aGlobalSignal)
                     anIf(SmallCoordinatorDBDbgEn, anVar(isUHV4PVICollectorReady));
                 }
             }
+            else if ((aGlobalSignalTypeTypeName == QStringLiteral("CanBusWorkerBasis::Notification"))
+                        && (aGlobalSignalTypeToInt == UHVPVICollectorDB::readyToWork))
+            {
+                anIf(SmallCoordinatorDBDbgEn, anAck("CanBusWorkerBasis::Notification"));
+                if (aGlobalSignal.Data.toString() == CanBusWorkerObjName)
+                {
+                    isCanBusWorkerReady = true;
+                    anIf(SmallCoordinatorDBDbgEn, anVar(isCanBusWorkerReady));
+                }
+            }
             checkIfAllWorkersReady();
         }
     }
@@ -221,6 +236,10 @@ void SmallCoordinatorDB::executeGlobalSignals()
             else if (currentDestination == UHV4PVICollectorObjName)
             {
                 emit ToUHV4PVICollector(currentGlobalSignal);
+            }
+            else if (currentDestination == CanBusWorkerObjName)
+            {
+                emit ToCanBusWorker(currentGlobalSignal);
             }
             else if (currentDestination == SmallCoordinatorObjName)
             {
