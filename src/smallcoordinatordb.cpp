@@ -128,6 +128,7 @@ void SmallCoordinatorDB::In(const GlobalSignal &aGlobalSignal)
             replyUHVPortName.Type = QVariant::fromValue(SerialPortWorkerBasis::replyPortName);
             if (SenderName == UHV2WorkerObjName)
             {
+
 #ifdef __anWINOS__
                 replyUHVPortName.Data = QVariant::fromValue(QStringLiteral("COM3"));
 #else
