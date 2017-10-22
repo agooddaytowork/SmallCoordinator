@@ -54,15 +54,6 @@ SOURCES += \
     SerialPortWorker/src/serialportworker.cpp \
     SerialPortWorker/src/serialportworkerbasis.cpp \
     SerialPortWorker/src/uninitiatedserialportworker.cpp \
-    UHVPVICollector/src/emitreadi.cpp \
-    UHVPVICollector/src/emitreadp.cpp \
-    UHVPVICollector/src/emitreadv.cpp \
-    UHVPVICollector/src/idleuhvpvicollector.cpp \
-    UHVPVICollector/src/uhvpvicollector.cpp \
-    UHVPVICollector/src/uhvpvicollectordb.cpp \
-    UHVPVICollector/src/wait4i.cpp \
-    UHVPVICollector/src/wait4p.cpp \
-    UHVPVICollector/src/wait4v.cpp \
     CanBusWorker/src/canbusworker.cpp \
     CanBusWorker/src/canbusworkerbasis.cpp \
     CanBusWorker/src/errorcanbusworker.cpp \
@@ -70,7 +61,19 @@ SOURCES += \
     CanBusWorker/src/idlecanbusworker.cpp \
     CanBusWorker/src/runningcanbusworker.cpp \
     CanBusWorker/src/uninitiatedcanbusworker.cpp \
-    CanBusWorker/src/writeframecanbusworker.cpp
+    CanBusWorker/src/writeframecanbusworker.cpp \
+    SerialPortDataProcessor/src/errorserialportdataprocessor.cpp \
+    SerialPortDataProcessor/src/idleserialportdataprocessor.cpp \
+    SerialPortDataProcessor/src/runningserialportdataprocessor.cpp \
+    SerialPortDataProcessor/src/serialportdataprocessor.cpp \
+    SerialPortDataProcessor/src/serialportdataprocessorbasis.cpp \
+    SerialPortDataProcessor/src/uninitiatedserialportdataprocessor.cpp \
+    CanDataProcessor/src/candataprocessor.cpp \
+    CanDataProcessor/src/candataprocessorbasis.cpp \
+    CanDataProcessor/src/errorcandataprocessor.cpp \
+    CanDataProcessor/src/idlecandataprocessor.cpp \
+    CanDataProcessor/src/runningcandataprocessor.cpp \
+    CanDataProcessor/src/uninitiatedcandataprocessor.cpp
 
 
 HEADERS += \
@@ -103,15 +106,6 @@ HEADERS += \
     SerialPortWorker/src/serialportworker.h \
     SerialPortWorker/src/serialportworkerbasis.h \
     SerialPortWorker/src/uninitiatedserialportworker.h \
-    UHVPVICollector/src/emitreadi.h \
-    UHVPVICollector/src/emitreadp.h \
-    UHVPVICollector/src/emitreadv.h \
-    UHVPVICollector/src/idleuhvpvicollector.h \
-    UHVPVICollector/src/uhvpvicollector.h \
-    UHVPVICollector/src/uhvpvicollectordb.h \
-    UHVPVICollector/src/wait4i.h \
-    UHVPVICollector/src/wait4p.h \
-    UHVPVICollector/src/wait4v.h \
     CanBusWorker/src/canbusworker.h \
     CanBusWorker/src/canbusworkerbasis.h \
     CanBusWorker/src/errorcanbusworker.h \
@@ -119,7 +113,19 @@ HEADERS += \
     CanBusWorker/src/idlecanbusworker.h \
     CanBusWorker/src/runningcanbusworker.h \
     CanBusWorker/src/uninitiatedcanbusworker.h \
-    CanBusWorker/src/writeframecanbusworker.h
+    CanBusWorker/src/writeframecanbusworker.h \
+    SerialPortDataProcessor/src/errorserialportdataprocessor.h \
+    SerialPortDataProcessor/src/idleserialportdataprocessor.h \
+    SerialPortDataProcessor/src/runningserialportdataprocessor.h \
+    SerialPortDataProcessor/src/serialportdataprocessor.h \
+    SerialPortDataProcessor/src/serialportdataprocessorbasis.h \
+    SerialPortDataProcessor/src/uninitiatedserialportdataprocessor.h \
+    CanDataProcessor/src/candataprocessor.h \
+    CanDataProcessor/src/candataprocessorbasis.h \
+    CanDataProcessor/src/errorcandataprocessor.h \
+    CanDataProcessor/src/idlecandataprocessor.h \
+    CanDataProcessor/src/runningcandataprocessor.h \
+    CanDataProcessor/src/uninitiatedcandataprocessor.h
 
 FORMS += \
         mainwindow.ui

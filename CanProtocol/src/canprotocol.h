@@ -1,6 +1,6 @@
 #ifndef CANPROTOCOL_H
 #define CANPROTOCOL_H
-#define CanPtcDbgEn 0
+#define CanPtcDbgEn 1
 
 #include <QCanBusFrame>
 #include <QByteArray>
@@ -16,7 +16,7 @@ public:
     explicit CanProtocol(const quint8 &identifier, const QByteArray &data);
     explicit CanProtocol(const QCanBusFrame &CanMsg);
 
-    void operator=(const QCanBusFrame &CanMsg);
+    CanProtocol &operator=(const QCanBusFrame &CanMsg);
 
     bool IsOfRightFormat() const;
 
@@ -47,9 +47,9 @@ public:
     bool getValveControlResetBit() const;
 
 
-    static const CanProtocol &PresenceRequest;
-    static const CanProtocol &DataRequest(const quint8 &sdcsid);
-    static const CanProtocol &PresenceResponse(const quint8 &sdcsid);
+    static const CanProtocol PresenceRequest;
+    static const CanProtocol DataRequest(const quint8 &sdcsid);
+    static const CanProtocol PresenceResponse(const quint8 &sdcsid);
 };
 
 #endif // CANPROTOCOL_H

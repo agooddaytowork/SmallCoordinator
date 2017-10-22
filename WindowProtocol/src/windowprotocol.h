@@ -1,7 +1,7 @@
 #ifndef WINDOWPROTOCOL_H
 #define WINDOWPROTOCOL_H
 
-#define WindowProtocolDbgEn 0
+#define WindowProtocolDbgEn 1
 
 #include <QByteArray>
 #include "anLogger/src/anlogger.h"
@@ -117,7 +117,7 @@ public:
     WindowProtocol &PMeasured();
 
     const QByteArray &genMSG();
-    static WindowProtocol &fromQByteArray(const QByteArray &aMsg);
+    static WindowProtocol fromQByteArray(const QByteArray &aMsg);
 
     WindowProtocol &setCMDFlag(const bool isACMD);
 
@@ -136,8 +136,8 @@ private:
 
     //WIN Set Indexed In Two Fields: WIN Meaning & WIN Code, Optimizing For Fast Performance
     //All Details About WINs Defined In Source File
-    static const QHash<QString, quint16> &WINMean2WINCode;
-    static const QHash<quint16, QString> &WINCode2WINMean;
+    static const QHash<QString, quint16> WINMean2WINCode;
+    static const QHash<quint16, QString> WINCode2WINMean;
 
     //Miscellany (Just A Bunch Of Other Constants)
     static constexpr const quint8 RD = 0x30;
